@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="edu.cmu.hustlr.BuyShortActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock Name"
+        android:id="@+id/textStockNameLabel"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Price"
+        android:id="@+id/textCurrentPriceLabel"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textBoughtQuantity"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bought Price"
+        android:id="@+id/textBoughtPriceLabel"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/textStockName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bought Quantity"
+        android:id="@+id/textBoughtQuantityLabel"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/textBoughtPrice"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="APPL"
+        android:id="@+id/textStockName"
+        android:layout_below="@+id/textStockNameLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--"
+        android:id="@+id/textBoughtPrice"
+        android:layout_below="@+id/textBoughtPriceLabel"
+        android:layout_alignRight="@+id/textStockNameLabel"
+        android:layout_alignEnd="@+id/textStockNameLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/textBoughtQuantity"
+        android:layout_below="@+id/textBoughtQuantityLabel"
+        android:layout_alignRight="@+id/textBoughtPrice"
+        android:layout_alignEnd="@+id/textBoughtPrice" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$121.06"
+        android:id="@+id/textCurrentPrice"
+        android:layout_below="@+id/textCurrentPriceLabel"
+        android:layout_alignRight="@+id/textStockName"
+        android:layout_alignEnd="@+id/textStockName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the quantity you want to buy"
+        android:id="@+id/textInputQuantityLabel"
+        android:layout_below="@+id/textCurrentPrice"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editInputQuantity"
+        android:layout_below="@+id/textInputQuantityLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="100" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Buy"
+        android:id="@+id/buttonSubmit"
+        android:layout_marginBottom="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textBoughtQuantity"
+        android:layout_alignStart="@+id/textBoughtQuantity" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/buttonCancel"
+        android:layout_alignTop="@+id/buttonSubmit"
+        android:layout_toRightOf="@+id/textInputQuantityLabel"
+        android:layout_toEndOf="@+id/textInputQuantityLabel" />
+
+</RelativeLayout>

@@ -220,7 +220,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/textSampleQuantity2"
-        android:layout_toStartOf="@+id/textSampleQuantity2" />
+        android:layout_toStartOf="@+id/textSampleQuantity2"
+        android:text="APP" />
 
     <Button
         android:layout_width="wrap_content"
