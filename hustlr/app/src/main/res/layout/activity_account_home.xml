@@ -212,4 +212,23 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editSearchStock"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/textSampleQuantity2"
+        android:layout_toStartOf="@+id/textSampleQuantity2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Stock"
+        android:id="@+id/buttonSearchStock"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/textCashValue"
+        android:layout_alignEnd="@+id/textCashValue" />
+
 </RelativeLayout>
