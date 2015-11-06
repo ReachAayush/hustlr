@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".AccountHomeActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editSearchAFriend"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="search a friend"
+        android:layout_toLeftOf="@+id/buttonSearch"
+        android:layout_toStartOf="@+id/buttonSearch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Portfolio"
+        android:id="@+id/textPortfolioLabel"
+        android:layout_below="@+id/editSearchAFriend"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$1,023,553"
+        android:id="@+id/textCashValue"
+        android:layout_below="@+id/textPortfolioLabel"
+        android:layout_alignRight="@+id/buttonSearch"
+        android:layout_alignEnd="@+id/buttonSearch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cash:"
+        android:id="@+id/textCashLabel"
+        android:layout_alignTop="@+id/textCashValue"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/textCashValue"
+        android:layout_alignRight="@+id/textPortfolioLabel"
+        android:layout_alignEnd="@+id/textPortfolioLabel" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:id="@+id/buttonSearch"
+        android:layout_alignBottom="@+id/editSearchAFriend"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current"
+        android:id="@+id/textCurrentPriceLabel"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textCashLabel"
+        android:layout_alignRight="@+id/textSampleCurrentPrice1"
+        android:layout_alignEnd="@+id/textSampleCurrentPrice1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bought"
+        android:id="@+id/textBoughtPriceLabel"
+        android:layout_alignTop="@+id/textCurrentPriceLabel"
+        android:layout_alignRight="@+id/textSampleBoughtPrice1"
+        android:layout_alignEnd="@+id/textSampleBoughtPrice1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CSCO"
+        android:id="@+id/textSampleStock1"
+        android:layout_alignTop="@+id/textSampleCurrentPrice1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textSampleCurrentPrice1"
+        android:text="$29.14"
+        android:layout_alignTop="@+id/textSampleBoughtPrice1"
+        android:layout_toRightOf="@+id/textSampleStock1"
+        android:layout_toEndOf="@+id/textSampleStock1"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$30.11"
+        android:id="@+id/textSampleBoughtPrice1"
+        android:layout_alignTop="@+id/textSampleQuantity1"
+        android:layout_toLeftOf="@+id/textSampleQuantity1"
+        android:layout_toStartOf="@+id/textSampleQuantity1"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2,000"
+        android:id="@+id/textSampleQuantity1"
+        android:layout_alignBaseline="@+id/buttonSell1"
+        android:layout_alignBottom="@+id/buttonSell1"
+        android:layout_toLeftOf="@+id/buttonSell2"
+        android:layout_toStartOf="@+id/buttonSell2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sell"
+        android:id="@+id/buttonSell1"
+        android:layout_alignBaseline="@+id/buttonEdit1"
+        android:layout_alignBottom="@+id/buttonEdit1"
+        android:layout_toLeftOf="@+id/buttonEdit1"
+        android:layout_toStartOf="@+id/buttonEdit1" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/buttonEdit1"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:id="@+id/textView"
+        android:layout_alignTop="@+id/textBoughtPriceLabel"
+        android:layout_alignRight="@+id/textSampleQuantity2"
+        android:layout_alignEnd="@+id/textSampleQuantity2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock"
+        android:id="@+id/textView2"
+        android:layout_alignTop="@+id/textCurrentPriceLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BA"
+        android:id="@+id/textSampleStock2"
+        android:layout_alignTop="@+id/textSampleCurrentPrice2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$146.11"
+        android:id="@+id/textSampleBoughtPrice2"
+        android:layout_alignTop="@+id/textSampleQuantity2"
+        android:layout_alignRight="@+id/textBoughtPriceLabel"
+        android:layout_alignEnd="@+id/textBoughtPriceLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$147.18"
+        android:id="@+id/textSampleCurrentPrice2"
+        android:layout_alignTop="@+id/textSampleBoughtPrice2"
+        android:layout_alignRight="@+id/textCurrentPriceLabel"
+        android:layout_alignEnd="@+id/textCurrentPriceLabel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="500"
+        android:id="@+id/textSampleQuantity2"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/buttonSell2"
+        android:layout_toStartOf="@+id/buttonSell2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cover"
+        android:id="@+id/buttonSell2"
+        android:layout_alignTop="@+id/button2"
+        android:layout_toLeftOf="@+id/button2"
+        android:layout_toStartOf="@+id/button2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:id="@+id/button2"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
