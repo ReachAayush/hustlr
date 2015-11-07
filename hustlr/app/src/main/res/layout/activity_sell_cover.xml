@@ -107,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:id="@+id/buttonSubmit"
+        android:id="@+id/buttonSell"
         android:layout_marginBottom="19dp"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/textBoughtQuantity"
@@ -118,7 +118,7 @@
         android:layout_height="wrap_content"
         android:text="Cancel"
         android:id="@+id/buttonCancel"
-        android:layout_alignTop="@+id/buttonSubmit"
+        android:layout_alignTop="@+id/buttonSell"
         android:layout_toRightOf="@+id/textInputQuantityLabel"
         android:layout_toEndOf="@+id/textInputQuantityLabel" />
 
