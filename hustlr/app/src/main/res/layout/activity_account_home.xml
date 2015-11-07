@@ -72,8 +72,8 @@
         android:text="Bought"
         android:id="@+id/textBoughtPriceLabel"
         android:layout_alignTop="@+id/textCurrentPriceLabel"
-        android:layout_alignRight="@+id/textSampleBoughtPrice1"
-        android:layout_alignEnd="@+id/textSampleBoughtPrice1" />
+        android:layout_alignLeft="@+id/textSampleBoughtPrice1"
+        android:layout_alignStart="@+id/textSampleBoughtPrice1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -101,10 +101,8 @@
         android:text="$30.11"
         android:id="@+id/textSampleBoughtPrice1"
         android:layout_alignTop="@+id/textSampleQuantity1"
-        android:layout_toLeftOf="@+id/textSampleQuantity1"
-        android:layout_toStartOf="@+id/textSampleQuantity1"
-        android:layout_marginRight="31dp"
-        android:layout_marginEnd="31dp" />
+        android:layout_alignRight="@+id/textSampleBoughtPrice2"
+        android:layout_alignEnd="@+id/textSampleBoughtPrice2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -144,8 +142,8 @@
         android:text="Quantity"
         android:id="@+id/textView"
         android:layout_alignTop="@+id/textBoughtPriceLabel"
-        android:layout_alignRight="@+id/textSampleQuantity2"
-        android:layout_alignEnd="@+id/textSampleQuantity2" />
+        android:layout_alignLeft="@+id/textSampleQuantity1"
+        android:layout_alignStart="@+id/textSampleQuantity1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -170,9 +168,11 @@
         android:layout_height="wrap_content"
         android:text="$146.11"
         android:id="@+id/textSampleBoughtPrice2"
-        android:layout_alignTop="@+id/textSampleQuantity2"
-        android:layout_alignRight="@+id/textBoughtPriceLabel"
-        android:layout_alignEnd="@+id/textBoughtPriceLabel" />
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textSampleCurrentPrice2"
+        android:layout_toEndOf="@+id/textSampleCurrentPrice2"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
 
     <TextView
         android:layout_width="wrap_content"

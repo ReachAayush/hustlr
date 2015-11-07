@@ -64,7 +64,7 @@ public class AccountHomeActivity extends AppCompatActivity {
         );
 
         Button buttonSearchFriend = (Button)findViewById(R.id.buttonSearch);
-        buttonSearchStock.setOnClickListener(
+        buttonSearchFriend.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         Intent intent = new Intent(AccountHomeActivity.this, FriendHomeActivity.class);
