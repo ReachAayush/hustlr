@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class AccountHomeActivity extends AppCompatActivity {
 
@@ -58,6 +59,7 @@ public class AccountHomeActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         Intent intent = new Intent(AccountHomeActivity.this, BuyShortActivity.class);
+                        intent.putExtra("searchedStockSymbol", getSearchedStock());
                         startActivity(intent);
                     }
                 }
@@ -68,9 +70,18 @@ public class AccountHomeActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         Intent intent = new Intent(AccountHomeActivity.this, FriendHomeActivity.class);
+                        intent.putExtra("searchedStockSymbol", getSearchedFriend());
                         startActivity(intent);
                     }
                 }
         );
+    }
+
+    public String getSearchedStock(){
+        return ((EditText) findViewById(R.id.editSearchStock)).getText().toString();
+    }
+
+    public String getSearchedFriend(){
+        return ((EditText) findViewById(R.id.editSearchAFriend)).getText().toString();
     }
 }
