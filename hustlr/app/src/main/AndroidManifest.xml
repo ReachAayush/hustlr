@@ -17,8 +17,13 @@
         </activity>
         <activity android:name=".SellCoverActivity" >
         </activity>
-        <activity android:name=".SignupActivity" >
+        <activity android:name=".FriendHomeActivity" >
         </activity>
+        <activity android:name=".BuyShortActivity" >
+        </activity>
+        <activity android:name=".AccountHomeActivity" >
+        </activity>
+
     </application>
 
 </manifest>

@@ -198,16 +198,16 @@
         android:layout_height="wrap_content"
         android:text="Cover"
         android:id="@+id/buttonSell2"
-        android:layout_alignTop="@+id/button2"
-        android:layout_toLeftOf="@+id/button2"
-        android:layout_toStartOf="@+id/button2" />
+        android:layout_alignTop="@+id/buttonEdit2"
+        android:layout_toLeftOf="@+id/buttonEdit2"
+        android:layout_toStartOf="@+id/buttonEdit2" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
-        android:id="@+id/button2"
+        android:id="@+id/buttonEdit2"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
