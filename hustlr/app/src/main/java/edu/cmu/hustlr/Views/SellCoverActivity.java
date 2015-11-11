@@ -1,0 +1,38 @@
+package edu.cmu.hustlr.Views;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class SellCoverActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sell_cover);
+
+        Button buttonSell = (Button)findViewById(R.id.buttonSell);
+        buttonSell.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(SellCoverActivity.this, AccountHomeActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        Button buttonCancel = (Button)findViewById(R.id.buttonCancel);
+        buttonCancel.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(SellCoverActivity.this, AccountHomeActivity.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+}
