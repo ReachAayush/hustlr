@@ -2,9 +2,6 @@ package edu.cmu.hustlr.Entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.provider.ContactsContract;
-
-import java.io.Serializable;
 
 /**
  * Created by jacobnelson on 11/12/15.
@@ -15,13 +12,16 @@ public class User implements Parcelable {
     // private ContactsContract.CommonDataKinds.Email address;
     private String address;
     private double cash; // initial cash
-    private Portfolio port;
+    private Portfolio portfolio;
     // getter
     public String getName() {
         return name;
     }
     public double getCash() {
         return cash;
+    }
+    public Portfolio getPortfolio() {
+        return portfolio;
     }
     // setter
     public void setName(String name) {
@@ -30,8 +30,8 @@ public class User implements Parcelable {
     public void setCash(double cash) {
         this.cash = cash;
     }
-    public void setPortfolio(Portfolio port) {
-        this.port = port;
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class User implements Parcelable {
         dest.writeString(password);
         dest.writeString(address);
         dest.writeDouble(cash);
-        dest.writeParcelable(port, 0);
+        dest.writeParcelable(portfolio, 0);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -55,7 +55,7 @@ public class User implements Parcelable {
             user.password = in.readString();
             user.address = in.readString();
             user.cash = in.readDouble();
-            user.port = in.readParcelable(Portfolio.class.getClassLoader());
+            user.portfolio = in.readParcelable(Portfolio.class.getClassLoader());
             return user;
         }
 

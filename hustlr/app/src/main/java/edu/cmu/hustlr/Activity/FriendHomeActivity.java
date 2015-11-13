@@ -25,7 +25,7 @@ public class FriendHomeActivity extends AppCompatActivity {
                 }
         );
 
-        Button buttonSearch = (Button)findViewById(R.id.buttonSearch);
+        Button buttonSearch = (Button)findViewById(R.id.btnHomeSearchFriend);
         buttonSearch.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {

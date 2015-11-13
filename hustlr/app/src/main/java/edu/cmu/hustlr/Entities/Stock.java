@@ -17,11 +17,17 @@ public class Stock implements Parcelable, Serializable {
     public Stock() {
     }
     // getter
+    public String getSymbol() {
+        return symbol;
+    }
     public boolean isShorted() {
         return shorted;
     }
     public int getShares() {
         return shares;
+    }
+    public double getPurchasePrice() {
+        return purchasePrice;
     }
     public double mockCurPrice;
     public double getCurrPrice() {

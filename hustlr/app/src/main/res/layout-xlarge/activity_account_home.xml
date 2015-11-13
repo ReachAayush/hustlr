@@ -9,20 +9,20 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editSearchAFriend"
+        android:id="@+id/editHomeSearchFriend"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="search a friend"
-        android:layout_toLeftOf="@+id/buttonSearch"
-        android:layout_toStartOf="@+id/buttonSearch" />
+        android:layout_toLeftOf="@+id/btnHomeSearchFriend"
+        android:layout_toStartOf="@+id/btnHomeSearchFriend" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Portfolio"
         android:id="@+id/textPortfolioLabel"
-        android:layout_below="@+id/editSearchAFriend"
+        android:layout_below="@+id/editHomeSearchFriend"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -32,8 +32,8 @@
         android:text="$1,023,553"
         android:id="@+id/textCashValue"
         android:layout_below="@+id/textPortfolioLabel"
-        android:layout_alignRight="@+id/buttonSearch"
-        android:layout_alignEnd="@+id/buttonSearch" />
+        android:layout_alignRight="@+id/btnHomeSearchFriend"
+        android:layout_alignEnd="@+id/btnHomeSearchFriend" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/buttonSearch"
-        android:layout_alignBottom="@+id/editSearchAFriend"
+        android:id="@+id/btnHomeSearchFriend"
+        android:layout_alignBottom="@+id/editHomeSearchFriend"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -227,7 +227,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search Stock"
-        android:id="@+id/buttonSearchStock"
+        android:id="@+id/btnHomeSearchStock"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textCashValue"
         android:layout_alignEnd="@+id/textCashValue" />

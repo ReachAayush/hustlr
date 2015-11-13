@@ -10,13 +10,16 @@ import java.util.ArrayList;
 /**
  * Created by jacobnelson on 11/12/15.
  */
-public class Portfolio implements Parcelable {
+public class Portfolio implements Parcelable, Serializable {
     private ArrayList<Stock> stocks = new ArrayList<Stock>();
     private ArrayList<Transaction> transactions = new ArrayList<Transaction>();
     private double cash = 0;
     // getter
     public ArrayList<Stock> getAllStocks() {
         return stocks;
+    }
+    public Stock getStock(int pos) {
+        return stocks.get(pos);
     }
     public ArrayList<Transaction> getAllTransactions() {
         return transactions;
