@@ -1,4 +1,4 @@
-package edu.cmu.hustlr.UI;
+package edu.cmu.hustlr.Activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

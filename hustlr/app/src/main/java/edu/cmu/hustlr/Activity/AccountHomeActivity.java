@@ -1,4 +1,4 @@
-package edu.cmu.hustlr.UI;
+package edu.cmu.hustlr.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -13,23 +13,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".UI.LoginActivity">
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.SellCoverActivity" >
+        <activity android:name=".Activity.SellCoverActivity" >
         </activity>
-        <activity android:name=".UI.FriendHomeActivity" >
+        <activity android:name=".Activity.FriendHomeActivity" >
         </activity>
-        <activity android:name=".UI.BuyShortActivity" >
+        <activity android:name=".Activity.BuyShortActivity" >
         </activity>
-        <activity android:name=".UI.AccountHomeActivity" >
+        <activity android:name=".Activity.AccountHomeActivity" >
         </activity>
         <activity
-            android:name=".UI.SignupActivity">
+            android:name=".Activity.SignupActivity">
         </activity>
     </application>
 

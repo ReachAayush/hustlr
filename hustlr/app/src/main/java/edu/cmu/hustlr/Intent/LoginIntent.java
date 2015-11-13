@@ -2,11 +2,9 @@ package edu.cmu.hustlr.Intent;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 
 import edu.cmu.hustlr.Entities.User;
-import edu.cmu.hustlr.UI.AccountHomeActivity;
-import edu.cmu.hustlr.UI.LoginActivity;
+import edu.cmu.hustlr.Activity.AccountHomeActivity;
 
 /**
  * Created by rueiminl on 2015/11/13.
