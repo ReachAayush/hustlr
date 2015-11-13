@@ -1,10 +1,11 @@
-package edu.cmu.hustlr.Views;
+package edu.cmu.hustlr.UI;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
 import android.content.*;
+import edu.cmu.hustlr.R;
 
 public class SignupActivity extends AppCompatActivity {
 

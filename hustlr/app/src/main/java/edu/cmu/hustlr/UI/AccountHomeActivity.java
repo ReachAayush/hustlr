@@ -1,4 +1,4 @@
-package edu.cmu.hustlr;
+package edu.cmu.hustlr.UI;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import edu.cmu.hustlr.R;
+
 
 public class AccountHomeActivity extends AppCompatActivity {
 

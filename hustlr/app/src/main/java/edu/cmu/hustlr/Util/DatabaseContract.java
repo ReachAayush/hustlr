@@ -28,6 +28,11 @@ public abstract class DatabaseContract {
          * The id of the portfolio associated with the user.
          */
         public static final String COLUMN_NAME_PORTFOLIO_ID = "portfolio_id";
+
+        /*
+         * The id associated with the user
+         */
+        public static final String COLUMN_NAME_PROFILE_ID = "profile_id";
     }
 
     /**
