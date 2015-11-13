@@ -1,4 +1,4 @@
-package edu.cmu.hustlr.Util;
+package edu.cmu.hustlr.DBLayout;
 
 
 import android.content.ContentValues;
