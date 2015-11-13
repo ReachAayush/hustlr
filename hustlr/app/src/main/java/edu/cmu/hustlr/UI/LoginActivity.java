@@ -28,6 +28,8 @@ import android.widget.TextView;
 
 import edu.cmu.hustlr.Entities.Portfolio;
 import edu.cmu.hustlr.Entities.Stock;
+import edu.cmu.hustlr.Entities.User;
+import edu.cmu.hustlr.Intent.LoginIntent;
 import edu.cmu.hustlr.R;
 
 import java.util.ArrayList;
@@ -83,7 +85,14 @@ public class LoginActivity extends AppCompatActivity{
         buttonLogin.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        // TODO: connect to the server, create the user, return the initial portfolio
+                        EditText editUsername = (EditText)findViewById(R.id.loginUsername);
+                        String username = editUsername.getText().toString();
+
+                        // TODO: connect to the remote server, retrieve the user, return the portfolio
+                        User mockUser = new User();
+                        mockUser.setName(username);
+                        mockUser.setCash(160000);
+
                         Portfolio mockPortfolio = new Portfolio();
                         mockPortfolio.setCash(1023.553);
                         Stock mockStock1 = new Stock();
@@ -101,14 +110,17 @@ public class LoginActivity extends AppCompatActivity{
                         mockStock2.setPurchasePrice(146.11);
                         mockPortfolio.addStock(mockStock2);
 
-                        Intent intent = new Intent(LoginActivity.this, AccountHomeActivity.class);
+                        mockUser.setPortfolio(mockPortfolio);
+                        /////
+
+                        Intent intent = new LoginIntent(mockUser, LoginActivity.this.getApplicationContext());
                         startActivity(intent);
                     }
                 }
         );
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.username);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.loginUsername);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
