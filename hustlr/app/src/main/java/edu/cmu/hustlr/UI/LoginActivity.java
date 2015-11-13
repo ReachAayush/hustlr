@@ -25,6 +25,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import edu.cmu.hustlr.Entities.Portfolio;
+import edu.cmu.hustlr.Entities.Stock;
 import edu.cmu.hustlr.R;
 
 import java.util.ArrayList;
@@ -80,6 +83,23 @@ public class LoginActivity extends AppCompatActivity{
         buttonLogin.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
+                        // TODO: connect to the server, create the user, return the initial portfolio
+                        Portfolio mockPortfolio = new Portfolio();
+                        mockPortfolio.setCash(1023.553);
+                        Stock mockStock1 = new Stock();
+                        mockStock1.setShares(2000);
+                        mockStock1.setSymbol("CSCO");
+                        mockStock1.mockCurPrice = 29.14;
+                        mockStock1.setPurchasePrice(30.11);
+                        mockPortfolio.addStock(mockStock1);
+
+                        Stock mockStock2 = new Stock();
+                        mockStock2.setSymbol("BA");
+                        mockStock2.setShorted(true);
+                        mockStock2.setShares(500);
+                        mockStock2.mockCurPrice = 147.18;
+                        mockStock2.setPurchasePrice(146.11);
+                        mockPortfolio.addStock(mockStock2);
 
                         Intent intent = new Intent(LoginActivity.this, AccountHomeActivity.class);
                         startActivity(intent);

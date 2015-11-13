@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.widget.*;
 import android.view.View;
 import android.content.*;
+
+import edu.cmu.hustlr.Entities.Portfolio;
+import edu.cmu.hustlr.Entities.Stock;
+import edu.cmu.hustlr.Intent.SignupIntent;
 import edu.cmu.hustlr.R;
 
 public class SignupActivity extends AppCompatActivity {
@@ -18,8 +22,7 @@ public class SignupActivity extends AppCompatActivity {
         buttonSignup.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-
-                        Intent intent = new Intent(SignupActivity.this, AccountHomeActivity.class);
+                        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }
                 }
@@ -29,8 +32,7 @@ public class SignupActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-
-                        Intent intent = new Intent(SignupActivity.this, AccountHomeActivity.class);
+                        Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }
                 }
