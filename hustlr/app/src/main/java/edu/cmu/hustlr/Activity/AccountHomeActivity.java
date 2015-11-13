@@ -1,6 +1,7 @@
 package edu.cmu.hustlr.Activity;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.cmu.hustlr.Entities.*;
+import edu.cmu.hustlr.Fragment.*;
 import edu.cmu.hustlr.R;
 import java.text.DecimalFormat;
 
@@ -20,6 +22,14 @@ public class AccountHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_home);
         FragmentManager manager = getSupportFragmentManager();
+        Fragment fragment = manager.findFragmentById(R.id.fragmentHomeSearchFriend);
+        if (fragment == null) {
+            fragment = SearchFriendFragment.newInstance("Search a friend");
+            manager.beginTransaction()
+                    .add(R.id.fragmentHomeSearchFriend, fragment)
+                    .commit();
+        }
+
         User user = (User) getIntent().getParcelableExtra("USER");
 
         TextView textUsername = (TextView)findViewById(R.id.textHomeUsername);
@@ -91,17 +101,6 @@ public class AccountHomeActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(AccountHomeActivity.this, BuyShortActivity.class);
                         intent.putExtra("searchedStockSymbol", getSearchedStock());
-                        startActivity(intent);
-                    }
-                }
-        );
-
-        Button buttonSearchFriend = (Button)findViewById(R.id.btnHomeSearchFriend);
-        buttonSearchFriend.setOnClickListener(
-                new Button.OnClickListener() {
-                    public void onClick(View v) {
-                        Intent intent = new Intent(AccountHomeActivity.this, FriendHomeActivity.class);
-                        intent.putExtra("searchedStockSymbol", getSearchedFriend());
                         startActivity(intent);
                     }
                 }
