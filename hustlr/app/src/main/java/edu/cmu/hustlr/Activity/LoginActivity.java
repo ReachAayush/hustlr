@@ -88,31 +88,8 @@ public class LoginActivity extends AppCompatActivity{
                         String username = editUsername.getText().toString();
 
                         // TODO: connect to the remote server, retrieve the user, return the portfolio
-                        User mockUser = new User();
-                        mockUser.setName(username);
-                        mockUser.setCash(160000);
-
-                        Portfolio mockPortfolio = new Portfolio();
-                        mockPortfolio.setCash(1023.553);
-                        Stock mockStock1 = new Stock();
-                        mockStock1.setShares(2000);
-                        mockStock1.setSymbol("CSCO");
-                        mockStock1.mockCurrentPrice = 29.14;
-                        mockStock1.setPurchasePrice(30.11);
-                        mockPortfolio.addStock(mockStock1);
-
-                        Stock mockStock2 = new Stock();
-                        mockStock2.setSymbol("BA");
-                        mockStock2.setShorted(true);
-                        mockStock2.setShares(500);
-                        mockStock2.mockCurrentPrice = 147.18;
-                        mockStock2.setPurchasePrice(146.11);
-                        mockPortfolio.addStock(mockStock2);
-
-                        mockUser.setPortfolio(mockPortfolio);
-                        /////
-                        User user = mockUser;
-
+                        User user = User.createMockUser();
+                        user.setName(username);
                         MyGlobal.me = user;
 
                         Intent intent = new LoginIntent(LoginActivity.this.getApplicationContext());

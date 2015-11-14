@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import edu.cmu.hustlr.Activity.FriendHomeActivity;
+import edu.cmu.hustlr.Intent.SearchFriendIntent;
 import edu.cmu.hustlr.R;
 
 /**
@@ -42,8 +43,8 @@ public class SearchFriendFragment extends Fragment {
         buttonSearchFriend.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity().getApplicationContext(), FriendHomeActivity.class);
-                        // intent.putExtra("searchedStockSymbol", getSearchedFriend());
+                        EditText editFriendName = (EditText) v.findViewById(R.id.editSearchFriendName);
+                        Intent intent = new SearchFriendIntent(getActivity().getApplicationContext(), editFriendName.getText().toString());
                         startActivity(intent);
                     }
                 }

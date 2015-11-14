@@ -63,4 +63,30 @@ public class User implements Parcelable {
             return new Transaction[size];
         }
     };
+
+    // TODO test only
+    public static User createMockUser() {
+        User mockUser = new User();
+        mockUser.setCash(160000);
+
+        Portfolio mockPortfolio = new Portfolio();
+        mockPortfolio.setCash(1023.553);
+        Stock mockStock1 = new Stock();
+        mockStock1.setShares(2000);
+        mockStock1.setSymbol("CSCO");
+        mockStock1.mockCurrentPrice = 29.14;
+        mockStock1.setPurchasePrice(30.11);
+        mockPortfolio.addStock(mockStock1);
+
+        Stock mockStock2 = new Stock();
+        mockStock2.setSymbol("BA");
+        mockStock2.setShorted(true);
+        mockStock2.setShares(500);
+        mockStock2.mockCurrentPrice = 147.18;
+        mockStock2.setPurchasePrice(146.11);
+        mockPortfolio.addStock(mockStock2);
+
+        mockUser.setPortfolio(mockPortfolio);
+        return mockUser;
+    }
 }
