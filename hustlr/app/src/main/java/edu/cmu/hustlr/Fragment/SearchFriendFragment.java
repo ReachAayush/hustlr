@@ -20,11 +20,8 @@ public class SearchFriendFragment extends Fragment {
 
     private static final String FRIEND_NAME = "FRIEND_NAME";
 
-    public static SearchFriendFragment newInstance(String friendname) {
+    public static SearchFriendFragment newInstance() {
         SearchFriendFragment fragment = new SearchFriendFragment();
-        Bundle args = new Bundle();
-        args.putString(FRIEND_NAME, friendname);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -37,8 +34,6 @@ public class SearchFriendFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search_friend, container, false);
-        EditText editFriendName = (EditText) v.findViewById(R.id.editSearchFriendName);
-        editFriendName.setText(getArguments().getString(FRIEND_NAME));
         Button buttonSearchFriend = (Button)v.findViewById(R.id.btnHomeSearchFriend);
         buttonSearchFriend.setOnClickListener(
                 new Button.OnClickListener() {
