@@ -12,6 +12,7 @@ import java.util.Date;
 public class Transaction implements Parcelable, Serializable {
     private String symbol;
     private Date date;
+    private boolean shorted;
     private double startPrice;
     private double endPrice;
     private int numShares;
@@ -26,6 +27,7 @@ public class Transaction implements Parcelable, Serializable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(symbol);
         dest.writeSerializable(date);
+        dest.writeByte((byte) (shorted ? 1 : 0));
         dest.writeDouble(startPrice);
         dest.writeDouble(endPrice);
         dest.writeInt(numShares);
@@ -36,6 +38,7 @@ public class Transaction implements Parcelable, Serializable {
         public Transaction createFromParcel(Parcel in) {
             Transaction transaction = new Transaction();
             transaction.symbol = in.readString();
+            transaction.shorted = in.readByte() != 0;
             transaction.date = (Date)in.readSerializable();
             transaction.startPrice = in.readDouble();
             transaction.endPrice = in.readDouble();
