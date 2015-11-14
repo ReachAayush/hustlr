@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import edu.cmu.hustlr.Entities.*;
 import edu.cmu.hustlr.Fragment.*;
+import edu.cmu.hustlr.Intent.*;
 import edu.cmu.hustlr.R;
 import java.text.DecimalFormat;
 
@@ -22,75 +23,36 @@ public class AccountHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_home);
 
-        User user = (User) getIntent().getParcelableExtra("USER");
-
         FragmentManager manager = getSupportFragmentManager();
         Fragment searchFriendFragment = SearchFriendFragment.newInstance("Search a friend");
-        Fragment stockListFragment = StockListFragment.getNewInstance(user.getPortfolio().getAllStocks());
+        Fragment stockListFragment = StockListFragment.getNewInstance(MyGlobal.me.getPortfolio().getAllStocks());
         manager.beginTransaction()
                 .add(R.id.fragmentHomeSearchFriend, searchFriendFragment)
                 .add(R.id.fragmentHomeStockList, stockListFragment)
                 .commit();
 
+        // TODO add UserFragment
         TextView textUsername = (TextView)findViewById(R.id.textHomeUsername);
-        textUsername.setText(user.getName());
+        textUsername.setText(MyGlobal.me.getName());
         TextView textUserCash = (TextView)findViewById(R.id.textHomeUserCash);
-        textUserCash.setText(DecimalFormat.getCurrencyInstance().format(user.getCash()));
+        textUserCash.setText(DecimalFormat.getCurrencyInstance().format(MyGlobal.me.getCash()));
 
-        Portfolio portfolio = user.getPortfolio();
+        Portfolio portfolio = MyGlobal.me.getPortfolio();
         TextView textPortfolioCash = (TextView)findViewById(R.id.textHomePortfolioCash);
-        textPortfolioCash.setText(DecimalFormat.getCurrencyInstance().format(user.getPortfolio().getCash()));
+        textPortfolioCash.setText(DecimalFormat.getCurrencyInstance().format(MyGlobal.me.getPortfolio().getCash()));
 
 
         // TODO show transaction history somewhere
 
-//        Button buttonSell1 = (Button)findViewById(R.id.buttonSell1);
-//        buttonSell1.setOnClickListener(
-//                new Button.OnClickListener() {
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(AccountHomeActivity.this, SellCoverActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }
-//        );
-//
-//        Button buttonSell2 = (Button)findViewById(R.id.buttonSell2);
-//        buttonSell2.setOnClickListener(
-//                new Button.OnClickListener() {
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(AccountHomeActivity.this, SellCoverActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }
-//        );
-//
-//        Button buttonEdit1 = (Button)findViewById(R.id.buttonEdit1);
-//        buttonEdit1.setOnClickListener(
-//                new Button.OnClickListener() {
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(AccountHomeActivity.this, BuyShortActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }
-//        );
-//
-//        Button buttonEdit2 = (Button)findViewById(R.id.buttonEdit2);
-//        buttonEdit2.setOnClickListener(
-//                new Button.OnClickListener() {
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(AccountHomeActivity.this, BuyShortActivity.class);
-//                        startActivity(intent);
-//                    }
-//                }
-//        );
-
+        // page flow
+        // TODO add SearchStockFragment
         Button buttonSearchStock = (Button)findViewById(R.id.btnHomeSearchStock);
         buttonSearchStock.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(AccountHomeActivity.this, BuyShortActivity.class);
-                        intent.putExtra("searchedStockSymbol", getSearchedStock());
-                        startActivity(intent);
+                        EditText editSearchStockName = (EditText)findViewById(R.id.editHomeSearchStock);
+                        Intent intent = new SearchStockIntent(AccountHomeActivity.this.getApplicationContext(), editSearchStockName.getText().toString());
+                        startActivityForResult(intent, 0);
                     }
                 }
         );

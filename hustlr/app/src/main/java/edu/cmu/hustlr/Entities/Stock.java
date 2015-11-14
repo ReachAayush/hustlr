@@ -11,9 +11,9 @@ import java.io.Serializable;
 public class Stock implements Parcelable, Serializable {
     private String symbol;
     private boolean shorted = false;
-    private int shares;
-    private double purchasePrice;
-    private double currPrice;
+    private int shares = 0;
+    private double purchasePrice = 0.0;
+    private double currentPrice;
     public Stock() {
     }
     // getter
@@ -29,10 +29,10 @@ public class Stock implements Parcelable, Serializable {
     public double getPurchasePrice() {
         return purchasePrice;
     }
-    public double mockCurPrice;
-    public double getCurrPrice() {
+    public double mockCurrentPrice;
+    public double getCurrentPrice() {
         // TODO: use market API to get the real time price
-        return mockCurPrice;
+        return mockCurrentPrice;
     }
 
     // setter
@@ -48,6 +48,7 @@ public class Stock implements Parcelable, Serializable {
     public void setPurchasePrice(double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
+    public void setCurrentPrice(double currentPrice) { this.currentPrice = currentPrice; }
 
     @Override
     public int describeContents() {
@@ -60,7 +61,7 @@ public class Stock implements Parcelable, Serializable {
         dest.writeByte((byte) (shorted ? 1 : 0));
         dest.writeInt(shares);
         dest.writeDouble(purchasePrice);
-        dest.writeDouble(currPrice);
+        dest.writeDouble(currentPrice);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -70,7 +71,7 @@ public class Stock implements Parcelable, Serializable {
             stock.shorted = in.readByte() != 0;
             stock.shares = in.readInt();
             stock.purchasePrice = in.readDouble();
-            stock.currPrice = in.readDouble();
+            stock.currentPrice = in.readDouble();
             return stock;
         }
 

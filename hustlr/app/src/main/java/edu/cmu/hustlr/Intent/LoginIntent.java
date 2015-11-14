@@ -3,6 +3,7 @@ package edu.cmu.hustlr.Intent;
 import android.content.Context;
 import android.content.Intent;
 
+import edu.cmu.hustlr.Entities.MyGlobal;
 import edu.cmu.hustlr.Entities.User;
 import edu.cmu.hustlr.Activity.AccountHomeActivity;
 
@@ -11,8 +12,8 @@ import edu.cmu.hustlr.Activity.AccountHomeActivity;
  */
 public class LoginIntent extends Intent {
     private static final String USER = "USER";
-    public LoginIntent(User user, Context context) {
+    public LoginIntent(Context context) {
         super(context, AccountHomeActivity.class);
-        this.putExtra(USER, user);
+        this.putExtra(USER, MyGlobal.me);
     }
 }

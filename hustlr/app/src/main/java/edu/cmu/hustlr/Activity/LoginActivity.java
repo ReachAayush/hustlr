@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -26,9 +27,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import edu.cmu.hustlr.Entities.Portfolio;
-import edu.cmu.hustlr.Entities.Stock;
-import edu.cmu.hustlr.Entities.User;
+import edu.cmu.hustlr.Entities.*;
 import edu.cmu.hustlr.Intent.LoginIntent;
 import edu.cmu.hustlr.R;
 
@@ -98,7 +97,7 @@ public class LoginActivity extends AppCompatActivity{
                         Stock mockStock1 = new Stock();
                         mockStock1.setShares(2000);
                         mockStock1.setSymbol("CSCO");
-                        mockStock1.mockCurPrice = 29.14;
+                        mockStock1.mockCurrentPrice = 29.14;
                         mockStock1.setPurchasePrice(30.11);
                         mockPortfolio.addStock(mockStock1);
 
@@ -106,15 +105,18 @@ public class LoginActivity extends AppCompatActivity{
                         mockStock2.setSymbol("BA");
                         mockStock2.setShorted(true);
                         mockStock2.setShares(500);
-                        mockStock2.mockCurPrice = 147.18;
+                        mockStock2.mockCurrentPrice = 147.18;
                         mockStock2.setPurchasePrice(146.11);
                         mockPortfolio.addStock(mockStock2);
 
                         mockUser.setPortfolio(mockPortfolio);
                         /////
+                        User user = mockUser;
 
-                        Intent intent = new LoginIntent(mockUser, LoginActivity.this.getApplicationContext());
-                        startActivity(intent);
+                        MyGlobal.me = user;
+
+                        Intent intent = new LoginIntent(LoginActivity.this.getApplicationContext());
+                        startActivityForResult(intent, 0);
                     }
                 }
         );
