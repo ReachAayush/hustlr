@@ -59,7 +59,7 @@ public class AccountHomeActivity extends AppCompatActivity {
     }
 
     public String getSearchedStock(){
-        return ((EditText) findViewById(R.id.editSearchStock)).getText().toString();
+        return ((EditText) findViewById(R.id.editHomeSearchStock)).getText().toString();
     }
 
     public String getSearchedFriend(){
