@@ -28,5 +28,4 @@ public class SearchStockIntent extends Intent {
 
         this.putExtra(STOCK_ID, (Parcelable)stock);
     }
-
 }

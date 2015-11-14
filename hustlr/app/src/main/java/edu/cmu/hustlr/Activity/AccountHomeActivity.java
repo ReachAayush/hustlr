@@ -24,7 +24,7 @@ public class AccountHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account_home);
 
         FragmentManager manager = getSupportFragmentManager();
-        Fragment searchFriendFragment = SearchFriendFragment.newInstance("Search a friend");
+        Fragment searchFriendFragment = SearchFriendFragment.newInstance();
         Fragment stockListFragment = StockListFragment.getNewInstance(MyGlobal.me.getPortfolio().getAllStocks());
         manager.beginTransaction()
                 .add(R.id.fragmentHomeSearchFriend, searchFriendFragment)

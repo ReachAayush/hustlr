@@ -6,12 +6,6 @@
     tools:context=".AccountHomeActivity"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragmentHomeSearchFriend">
-    </FrameLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -61,7 +55,7 @@
 
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:id="@+id/fragmentHomeStockList" >
     </FrameLayout>
 
@@ -69,6 +63,12 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"/>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragmentHomeSearchFriend">
+    </FrameLayout>
 
     <!-- TODO SearchStockFragment (ref to SearchFriendFragment) -->
     <LinearLayout
@@ -78,13 +78,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Search Stock"
-            android:id="@+id/btnHomeSearchStock" />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editHomeSearchStock"
-            android:text="APP" />
+            android:id="@+id/btnHomeSearchStock"
+            android:layout_gravity="right"/>
+        <android.support.design.widget.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editHomeSearchStock"
+                android:hint="Stock Symbol" />
+        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
-
 </LinearLayout>

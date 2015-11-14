@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import edu.cmu.hustlr.Activity.FriendHomeActivity;
+import edu.cmu.hustlr.Intent.SearchFriendIntent;
 import edu.cmu.hustlr.R;
 
 /**
@@ -19,11 +20,8 @@ public class SearchFriendFragment extends Fragment {
 
     private static final String FRIEND_NAME = "FRIEND_NAME";
 
-    public static SearchFriendFragment newInstance(String friendname) {
+    public static SearchFriendFragment newInstance() {
         SearchFriendFragment fragment = new SearchFriendFragment();
-        Bundle args = new Bundle();
-        args.putString(FRIEND_NAME, friendname);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -36,14 +34,12 @@ public class SearchFriendFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search_friend, container, false);
-        EditText editFriendName = (EditText) v.findViewById(R.id.editSearchFriendName);
-        editFriendName.setText(getArguments().getString(FRIEND_NAME));
         Button buttonSearchFriend = (Button)v.findViewById(R.id.btnHomeSearchFriend);
         buttonSearchFriend.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(getActivity().getApplicationContext(), FriendHomeActivity.class);
-                        // intent.putExtra("searchedStockSymbol", getSearchedFriend());
+                        EditText editFriendName = (EditText) getActivity().findViewById(R.id.editSearchFriendName);
+                        Intent intent = new SearchFriendIntent(getActivity().getApplicationContext(), editFriendName.getText().toString());
                         startActivity(intent);
                     }
                 }
