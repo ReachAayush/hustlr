@@ -22,7 +22,7 @@ public class SearchFriendFragment extends Fragment {
     public static SearchFriendFragment newInstance(String friendname) {
         SearchFriendFragment fragment = new SearchFriendFragment();
         Bundle args = new Bundle();
-        args.putSerializable(FRIEND_NAME, friendname);
+        args.putString(FRIEND_NAME, friendname);
         fragment.setArguments(args);
         return fragment;
     }

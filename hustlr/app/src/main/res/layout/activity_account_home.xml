@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".AccountHomeActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".AccountHomeActivity"
     android:orientation="vertical">
 
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragmentHomeSearchFriend">
     </FrameLayout>
@@ -56,62 +54,18 @@
             android:id="@+id/textHomePortfolioCash" />
     </LinearLayout>
 
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:id="@+id/fragmentHomeStockList" >
+    </FrameLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"/>
 
     <!-- TODO use ListFragment here -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="APPL "
-            android:id="@+id/textStockSymbol"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Cur: "
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" $0.00"
-            android:id="@+id/textStockCurrentPrice"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Purchase: "
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" $0.00"
-            android:id="@+id/textStockPurchasePrice"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Shares: "
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 2000"
-            android:id="@+id/textStockShares"
-            />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
 
     <!--
     <TextView

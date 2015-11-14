@@ -21,16 +21,16 @@ public class AccountHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_home);
-        FragmentManager manager = getSupportFragmentManager();
-        Fragment fragment = manager.findFragmentById(R.id.fragmentHomeSearchFriend);
-        if (fragment == null) {
-            fragment = SearchFriendFragment.newInstance("Search a friend");
-            manager.beginTransaction()
-                    .add(R.id.fragmentHomeSearchFriend, fragment)
-                    .commit();
-        }
 
         User user = (User) getIntent().getParcelableExtra("USER");
+
+        FragmentManager manager = getSupportFragmentManager();
+        Fragment searchFriendFragment = SearchFriendFragment.newInstance("Search a friend");
+        Fragment stockListFragment = StockListFragment.getNewInstance(user.getPortfolio().getAllStocks());
+        manager.beginTransaction()
+                .add(R.id.fragmentHomeSearchFriend, searchFriendFragment)
+                .add(R.id.fragmentHomeStockList, stockListFragment)
+                .commit();
 
         TextView textUsername = (TextView)findViewById(R.id.textHomeUsername);
         textUsername.setText(user.getName());
@@ -41,17 +41,6 @@ public class AccountHomeActivity extends AppCompatActivity {
         TextView textPortfolioCash = (TextView)findViewById(R.id.textHomePortfolioCash);
         textPortfolioCash.setText(DecimalFormat.getCurrencyInstance().format(user.getPortfolio().getCash()));
 
-        // TODO use ListFragment; Here I just show the first stock temporarilily
-        Stock stock = portfolio.getStock(0);
-
-        TextView textStockSymbol = (TextView)findViewById(R.id.textStockSymbol);
-        textStockSymbol.setText(stock.getSymbol());
-        TextView textStockCurrentPrice = (TextView)findViewById(R.id.textStockCurrentPrice);
-        textStockCurrentPrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getCurrPrice()));
-        TextView textStockPurchasePrice = (TextView)findViewById(R.id.textStockPurchasePrice);
-        textStockPurchasePrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getPurchasePrice()));
-        TextView textStockShares = (TextView)findViewById(R.id.textStockShares);
-        textStockShares.setText(String.valueOf(stock.getShares()));
 
         // TODO show transaction history somewhere
 
