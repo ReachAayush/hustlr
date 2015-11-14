@@ -38,7 +38,7 @@ public class SearchFriendFragment extends Fragment {
         buttonSearchFriend.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        EditText editFriendName = (EditText) v.findViewById(R.id.editSearchFriendName);
+                        EditText editFriendName = (EditText) getActivity().findViewById(R.id.editSearchFriendName);
                         Intent intent = new SearchFriendIntent(getActivity().getApplicationContext(), editFriendName.getText().toString());
                         startActivity(intent);
                     }
