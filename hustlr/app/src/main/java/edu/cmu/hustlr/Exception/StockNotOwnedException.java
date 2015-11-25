@@ -4,19 +4,18 @@ import android.content.Context;
 import android.widget.Toast;
 
 /**
- * Created by jacobnelson on 11/13/15.
+ * Created by jacobnelson on 11/24/15.
  */
-public class StockNotFoundException extends Throwable {
-
+public class StockNotOwnedException extends Throwable {
     private Context myContext;
 
-    public StockNotFoundException(Context context){
+    public StockNotOwnedException(Context context){
         myContext = context;
     }
 
     @Override
     public void printStackTrace() {
-        Toast.makeText(myContext, "This stock could not be found", Toast.LENGTH_LONG).show();
+        Toast.makeText(myContext, "You do not own this stock", Toast.LENGTH_LONG).show();
         super.printStackTrace();
     }
 }
