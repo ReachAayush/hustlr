@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('Hustlr_Backend:server');
+var debug = require('debug')('hustlr_backend:server');
 var http = require('http');
 
 /**
