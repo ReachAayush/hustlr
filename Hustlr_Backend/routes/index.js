@@ -34,7 +34,7 @@ function validatePassword(username, password, success, failure){
    connection.query(queryString, function(err, rows, fields) {
       if (err) throw err;
 
-      if (rows[0] == password){
+      if (rows[0].password == password){
          return success();
       }else{
          return failure();
@@ -63,18 +63,24 @@ router.get('/login', function(req, res, next) {
    var username = req.query.username;
    var password = req.query.password;
    console.log("User " + username + " tried logging in with password: " + password);
-   //check if user exists
-   if(checkIfUserExists(username)){
-      //validate password
-      if(validatePassword(username, password)){
-         sendJson({result: 'success'}, res);
-         return;
-      }
-      sendJson({result: 'fail', reason: 'user exists but password incorrect'}, res);
-      return;
-   }else{
+
+   var failure = function(){
       return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+   };
+
+   var success = function(){
+      var f1 = function(){
+         return sendJson({result: 'fail', reason: 'incorrect password'}, res);
+      }
+
+      var s1 = function(){
+         return sendJson({result: 'success'}, res);
+      }
+
+      validatePassword(username, password, s1, f1);
    }
+
+   checkIfUserExists(username, success, failure);
 });
 
 /* handle get request for signup attempt */
@@ -99,8 +105,8 @@ router.get('/signup', function(req, res, next) {
 
       createUser(username, password, '100000.00', s1, f1)
    }
-   
-   console.log('checking if user exists = ' + checkIfUserExists(username, success, failure));
+
+   checkIfUserExists(username, success, failure);
 });
 
 module.exports = router;
