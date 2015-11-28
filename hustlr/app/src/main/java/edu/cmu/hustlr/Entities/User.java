@@ -14,9 +14,8 @@ public class User implements Parcelable {
     private double cash; // initial cash
     private Portfolio portfolio;
     // getter
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public String getPassword() { return password; }
     public double getCash() {
         return cash;
     }
@@ -26,6 +25,9 @@ public class User implements Parcelable {
     // setter
     public void setName(String name) {
         this.name = name;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
     public void setCash(double cash) {
         this.cash = cash;

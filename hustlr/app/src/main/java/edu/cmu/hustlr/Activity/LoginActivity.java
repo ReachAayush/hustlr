@@ -28,8 +28,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.cmu.hustlr.Entities.*;
-import edu.cmu.hustlr.Intent.LoginIntent;
 import edu.cmu.hustlr.R;
+import edu.cmu.hustlr.Util.LoginTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -73,7 +73,6 @@ public class LoginActivity extends AppCompatActivity{
         buttonSignup.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-
                         Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                         startActivity(intent);
                     }
@@ -84,16 +83,18 @@ public class LoginActivity extends AppCompatActivity{
         buttonLogin.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
+                        // TODO ask data from server
+                        MyGlobal.me = User.createMockUser();
+
                         EditText editUsername = (EditText)findViewById(R.id.loginUsername);
                         String username = editUsername.getText().toString();
+                        MyGlobal.me.setName(username);
 
-                        // TODO: connect to the remote server, retrieve the user, return the portfolio
-                        User user = User.createMockUser();
-                        user.setName(username);
-                        MyGlobal.me = user;
+                        EditText editPassword = (EditText)findViewById(R.id.loginPassword);
+                        String password = editPassword.getText().toString();
+                        MyGlobal.me.setPassword(password);
 
-                        Intent intent = new LoginIntent(LoginActivity.this.getApplicationContext());
-                        startActivityForResult(intent, 0);
+                        new LoginTask(getApplicationContext()).execute();
                     }
                 }
         );
@@ -102,7 +103,7 @@ public class LoginActivity extends AppCompatActivity{
         mEmailView = (AutoCompleteTextView) findViewById(R.id.loginUsername);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView = (EditText) findViewById(R.id.loginPassword);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {

@@ -15,5 +15,6 @@ public class LoginIntent extends Intent {
     public LoginIntent(Context context) {
         super(context, AccountHomeActivity.class);
         this.putExtra(USER, MyGlobal.me);
+        this.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 }
