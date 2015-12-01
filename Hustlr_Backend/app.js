@@ -33,9 +33,9 @@ var connection = mysql.createConnection({
 
 var createUserTable = 'CREATE TABLE IF NOT EXISTS users (id MEDIUMINT NOT NULL AUTO_INCREMENT, username CHAR(50) NOT NULL, password CHAR(50) NOT NULL, portfolio_id MEDIUMINT, PRIMARY KEY (id));'
 
-var createPortfolioTable = 'CREATE TABLE IF NOT EXISTS portfolio (id MEDIUMINT NOT NULL AUTO_INCREMENT, cash INTEGER NOT NULL, PRIMARY KEY (id));'
+var createPortfolioTable = 'CREATE TABLE IF NOT EXISTS portfolio (id MEDIUMINT NOT NULL AUTO_INCREMENT, cash DECIMAL(10,2) NOT NULL, PRIMARY KEY (id));'
 
-var createOwnedStocksTable = 'CREATE TABLE IF NOT EXISTS owned_stock (id MEDIUMINT NOT NULL AUTO_INCREMENT, portfolio_id MEDIUMINT, symbol CHAR(5) NOT NULL, start_price DECIMAL(5,2), is_short TINYINT(1), PRIMARY KEY (id));'
+var createOwnedStocksTable = 'CREATE TABLE IF NOT EXISTS owned_stock (id MEDIUMINT NOT NULL AUTO_INCREMENT, portfolio_id MEDIUMINT, symbol CHAR(5) NOT NULL, quantity MEDIUMINT, start_price DECIMAL(5,2), is_short TINYINT(1), PRIMARY KEY (id));'
 
 var createTransactionTable = 'CREATE TABLE IF NOT EXISTS transaction (id MEDIUMINT NOT NULL AUTO_INCREMENT, owned_stock_id MEDIUMINT, portfolio_id MEDIUMINT, final_price DECIMAL(5,2), PRIMARY KEY (id));'
 
