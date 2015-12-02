@@ -5,16 +5,16 @@ Android application which allows users to register for a portfolio and practice 
 ## Installation
 
 For the Node.JS Backend:
-	-- install Node.JS
-	-- install MySQL
-	-- create a user "hustlr" with password "hustle" with all permissions
-	-- create a database called hustlr_db 'CREATE DATABASE hustlr_db'
+1. Install Node.JS
+2. Install MySQL
+3. Create a user "hustlr" with password "hustle" with all permissions
+4. Create a database called hustlr_db 'CREATE DATABASE hustlr_db'
 
 ## Usage
 
 For the Node.JS Backend:
-	-- 'cd Hustlr_Backend'
-	-- 'npm start'
+1. `cd Hustlr_Backend`
+2. `npm start`
 
 ## Contributing
 
