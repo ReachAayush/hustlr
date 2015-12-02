@@ -125,6 +125,31 @@ router.get('/getotheruser', function(req, res, next) {
    db.checkIfUserExists(username, success, failure);
 });
 
+/* handle get request for loading buy stock page */
+router.get('/loadbuy', function(req, res, next) {
+   var username = req.query.username;
+   var symbol = req.query.symbol;
+   console.log("User " + username + " wants to buy " + symbol);
+
+   var failure = function(){
+      return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+   };
+
+   var success = function(){
+      var priceCallback = function(price){
+         if(price){
+            return sendJson({result: 'success', symbol: symbol, price: price}, res);
+         }else{
+            return sendJson({result: 'fail', reason: 'no stock found from that symbol'}, res);  
+         }
+      }
+
+      getStockPrice(symbol, priceCallback);
+   };
+
+   db.checkIfUserExists(username, success, failure);
+});
+
 /* handle get request for buying stock */
 router.get('/buystock', function(req, res, next) {
    var username = req.query.username;
@@ -196,6 +221,31 @@ router.get('/loadsell', function(req, res, next) {
       };
 
       db.getOwnedStockById(id, validOwnedStockIdCallback);
+   };
+
+   db.checkIfUserExists(username, success, failure);
+});
+
+/* handle get request for loading short stock page */
+router.get('/loadshort', function(req, res, next) {
+   var username = req.query.username;
+   var symbol = req.query.symbol;
+   console.log("User " + username + " wants to short " + symbol);
+
+   var failure = function(){
+      return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+   };
+
+   var success = function(){
+      var priceCallback = function(price){
+         if(price){
+            return sendJson({result: 'success', symbol: symbol, price: price}, res);
+         }else{
+            return sendJson({result: 'fail', reason: 'no stock found from that symbol'}, res);  
+         }
+      }
+
+      getStockPrice(symbol, priceCallback);
    };
 
    db.checkIfUserExists(username, success, failure);
