@@ -84,6 +84,15 @@ var getUserStocks = function(username, callback){
 	return getUserPortfolioId(username, getPortfolioIdCallback);
 }
 
+var getOwnedStockById = function(owned_stock_id, callback){
+	var queryString = 'SELECT * from owned_stock WHERE id=' + owned_stock_id + ';';
+	connection.query(queryString, function(err, rows, fields) {
+		if (err) throw err;
+
+		return callback(rows[0]);
+	});
+}
+
 var buyStock = function(username, portfolio_id, cash, symbol, quantity, price, callback){
 	var queryString = 'INSERT INTO owned_stock (id, portfolio_id, symbol, quantity, start_price, is_short) VALUES (NULL, ' + portfolio_id + ', \'' + symbol + '\', ' + quantity + ', ' + price + ', 0);';
 	connection.query(queryString, function(err, rows, fields) {
@@ -107,5 +116,6 @@ module.exports = {
 	getUserPortfolioId: getUserPortfolioId,
 	getUserCash: getUserCash,
 	getUserStocks: getUserStocks,
-	buyStock: buyStock
+	buyStock: buyStock,
+	getOwnedStockById: getOwnedStockById
 }

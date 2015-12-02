@@ -162,4 +162,43 @@ router.get('/buystock', function(req, res, next) {
    db.checkIfUserExists(username, success, failure);
 });
 
+/* handle get request for loading sell stock page */
+router.get('/loadsell', function(req, res, next) {
+   var username = req.query.username;
+   var id = req.query.ownedStockId;
+   console.log("User " + username + " clicked sell on " + id);
+
+   var failure = function(){
+      return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+   };
+
+   var success = function(){
+      var validOwnedStockIdCallback = function(owned_stock){
+         if(owned_stock){
+            var os_symbol = owned_stock.symbol;
+            var os_quantity = owned_stock.quantity;
+            var os_start_price = owned_stock.start_price;
+            
+            var priceCallback = function(price){
+               if(price){
+                  return sendJson({result: 'success', symbol: os_symbol, quantity: os_quantity, id: id, curPrice: price, startPrice: os_start_price}, res);
+               }else{
+                  //means stock that has been bought no longer has price, very rare but possible i guess
+                  return sendJson({result: 'fail', reason: 'internal error'}, res);
+               }
+            }
+
+            getStockPrice(os_symbol, priceCallback);
+         }else{
+            //means id sent from app doesn't match owned_stock id (AKA NEVER SHOULD GET HERE)
+            return sendJson({result: 'fail', reason: 'internal error'}, res);
+         }
+      };
+
+      db.getOwnedStockById(id, validOwnedStockIdCallback);
+   };
+
+   db.checkIfUserExists(username, success, failure);
+});
+
 module.exports = router;
