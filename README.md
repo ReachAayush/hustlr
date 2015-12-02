@@ -1,6 +1,4 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Hustlr}
+# Hustlr
 
 Android application which allows users to register for a portfolio and practice the art of buying and selling stocks. Also allows users to short and cover stocks. Users can also view other profiles to compete against friends.
 
@@ -25,6 +23,3 @@ For the Node.JS Backend:
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
