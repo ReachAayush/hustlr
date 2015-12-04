@@ -251,7 +251,7 @@ router.get('/loadshort', function(req, res, next) {
    db.checkIfUserExists(username, success, failure);
 });
 
-/* handle get request for loading sell stock page */
+/* handle get request for selling stock */
 router.get('/sellstock', function(req, res, next) {
    var username = req.query.username;
    var id = req.query.ownedStockId;
