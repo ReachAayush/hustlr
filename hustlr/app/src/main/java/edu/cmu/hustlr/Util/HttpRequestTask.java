@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Map;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
 import edu.cmu.hustlr.Intent.LoginIntent;
@@ -21,13 +22,13 @@ import edu.cmu.hustlr.Intent.LoginIntent;
 /**
  * Created by rueiminl on 2015/12/4.
  */
-public abstract class HttpRequestTask extends AsyncTask<String, Void, String> {
+public abstract class HttpRequestTask extends AsyncTask<String, Void, JSONObject> {
     abstract protected String getUrl();
-    abstract protected void onPostExecute(String jsonString);
+    abstract protected void onPostExecute(JSONObject json);
 
     // return null if something wrong
     @Override
-    protected String doInBackground(String... params) {
+    protected JSONObject doInBackground(String... params) {
         String address = getUrl();
         URL url = null;
         try {
@@ -83,15 +84,50 @@ public abstract class HttpRequestTask extends AsyncTask<String, Void, String> {
             e.printStackTrace();
             return fail(e.toString());
         }
-        return response.toString();
+        return str2json(response.toString());
     }
 
-    private String fail(String reason) {
+    private JSONObject fail(String reason) {
         StringBuffer str = new StringBuffer();
         str.append("{");
         str.append("result:fail, ");
-        str.append("reason:"); str.append(reason);
+        str.append("reason:");
+        str.append(reason);
         str.append("}");
-        return str.toString();
+        return str2json(str.toString());
+    }
+
+    private JSONObject str2json(String str) {
+        try {
+            return new JSONObject(str.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            // panic
+            return null;
+        }
+    }
+
+    // utility
+    static protected String getUrl(String page, Map<String, String> params) {
+        StringBuffer address = new StringBuffer();
+        address.append("http://");
+        address.append(MyGlobal.host);
+        address.append(":");
+        address.append(MyGlobal.port);
+        address.append("/");
+        address.append(page);
+        boolean first = true;
+        for (Map.Entry entry : params.entrySet()) {
+            if (first) {
+                address.append("?");
+                first = false;
+            }
+            else
+                address.append("&");
+            address.append(entry.getKey());
+            address.append("=");
+            address.append(entry.getValue());
+        }
+        return address.toString();
     }
 }

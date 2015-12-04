@@ -21,6 +21,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
 import edu.cmu.hustlr.Intent.LoginIntent;
@@ -29,6 +30,7 @@ import edu.cmu.hustlr.Intent.LoginIntent;
 /**
  * Created by rueiminl on 2015/11/26.
  */
+// if success => goto home account page automatically
 public class LoginTask extends HttpRequestTask {
     private Context context;
     public LoginTask(Context context) {
@@ -37,32 +39,22 @@ public class LoginTask extends HttpRequestTask {
 
     @Override
     protected String getUrl() {
-        StringBuffer address = new StringBuffer();
-        address.append("http://");
-        address.append(MyGlobal.host);
-        address.append(":");
-        address.append(MyGlobal.port);
-        address.append("/login");
-        address.append("?username=");
-        address.append(MyGlobal.me.getName());
-        address.append("&password=");
-        address.append(MyGlobal.me.getPassword());
-        return address.toString();
+        TreeMap<String, String> params = new TreeMap<String, String>();
+        params.put("username", MyGlobal.me.getName());
+        params.put("password", MyGlobal.me.getPassword());
+        return getUrl("login", params);
     }
 
     @Override
-    protected void onPostExecute(String jsonString) {
-        JSONObject json = null;
+    protected void onPostExecute(JSONObject json) {
         try {
-            json = new JSONObject(jsonString);
-            if (json.get("result").equals("fail")) {
+            if (json.getString("result").equals("fail")) {
                 Toast.makeText(context, json.get("reason").toString(), Toast.LENGTH_LONG).show();
                 return;
             }
             new HomeAccountTask(context).execute();
         } catch (JSONException e) {
-                e.printStackTrace();
-                Toast.makeText(context, "failed to transfer json string to json object: " + jsonString, Toast.LENGTH_LONG);
+            e.printStackTrace();
         }
     }
 }

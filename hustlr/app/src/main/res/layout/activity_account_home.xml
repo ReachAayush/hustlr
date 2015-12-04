@@ -75,14 +75,8 @@
     <!-- TODO SearchStockFragment (ref to SearchFriendFragment) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search Stock"
-            android:id="@+id/btnHomeSearchStock"
-            android:layout_gravity="right"
-            />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <android.support.design.widget.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content">
             <EditText
                 android:layout_width="match_parent"
@@ -90,6 +84,24 @@
                 android:id="@+id/editHomeSearchStock"
                 android:hint="Stock Symbol" />
         </android.support.design.widget.TextInputLayout>
-
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buy"
+            android:id="@+id/btnHomeBuyStock"
+            android:layout_gravity="right"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Short"
+            android:id="@+id/btnHomeShortStock"
+            android:layout_gravity="right"
+            />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -14,7 +14,12 @@ public class BuyShortActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_short);
 
+        Bundle extra = getIntent().getExtras();
+        String type = extra.getString("type");
+        double price = extra.getDouble("price");
+
         Button buttonBuy = (Button)findViewById(R.id.buttonBuy);
+        buttonBuy.setText(type);
         buttonBuy.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
