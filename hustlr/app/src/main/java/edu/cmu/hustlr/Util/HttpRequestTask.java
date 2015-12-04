@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,13 +16,14 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
+import edu.cmu.hustlr.Intent.LoginIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
  */
 public abstract class HttpRequestTask extends AsyncTask<String, Void, String> {
     abstract protected String getUrl();
-    abstract protected void onPostExecute(String json);
+    abstract protected void onPostExecute(String jsonString);
 
     // return null if something wrong
     @Override

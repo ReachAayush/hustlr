@@ -67,9 +67,9 @@ public class StockListFragment extends ListFragment {
             TextView textStockCurrentPrice = (TextView)convertView.findViewById(R.id.textStockCurrentPrice);
             textStockCurrentPrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getCurrentPrice()));
             TextView textStockPurchasePrice = (TextView)convertView.findViewById(R.id.textStockPurchasePrice);
-            textStockPurchasePrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getPurchasePrice()));
+            textStockPurchasePrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getStartPrice()));
             TextView textStockShares = (TextView)convertView.findViewById(R.id.textStockShares);
-            textStockShares.setText(String.valueOf(stock.getShares()));
+            textStockShares.setText(String.valueOf(stock.getQuantity()));
             return convertView;
         }
     }

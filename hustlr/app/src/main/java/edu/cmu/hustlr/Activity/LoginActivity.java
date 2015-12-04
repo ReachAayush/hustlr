@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // goto register page
         Button buttonSignup = (Button)findViewById(R.id.registerButton);
         buttonSignup.setOnClickListener(
                 new Button.OnClickListener() {
@@ -79,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
         );
 
+        // try to login and goto account home page
         Button buttonLogin = (Button)findViewById(R.id.signinButton);
         buttonLogin.setOnClickListener(
                 new Button.OnClickListener() {

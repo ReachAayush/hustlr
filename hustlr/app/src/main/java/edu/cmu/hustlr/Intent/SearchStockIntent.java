@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 
-import edu.cmu.hustlr.Activity.AccountHomeActivity;
 import edu.cmu.hustlr.Activity.BuyShortActivity;
-import edu.cmu.hustlr.Entities.MyGlobal;
 import edu.cmu.hustlr.Entities.Stock;
 
 /**
@@ -21,8 +19,8 @@ public class SearchStockIntent extends Intent {
         Stock mockStock = new Stock();
         mockStock.setSymbol(symbol);
         mockStock.setCurrentPrice(mockCurrentPrice);
-        mockStock.setPurchasePrice(0);
-        mockStock.setShares(0);
+        mockStock.setStartPrice(0);
+        mockStock.setQuantity(0);
         /////
         Stock stock = mockStock;
 

@@ -11,23 +11,27 @@ import java.io.Serializable;
 public class Stock implements Parcelable, Serializable {
     private String symbol;
     private boolean shorted = false;
-    private int shares = 0;
-    private double purchasePrice = 0.0;
+    private int id = 0;
+    private int portfolioId = 0;
+    private int quantity = 0;
+    private double startPrice = 0.0;
     private double currentPrice;
     public Stock() {
     }
     // getter
+    public int getId() { return id; }
+    public int getPortfolioId() { return portfolioId; }
     public String getSymbol() {
         return symbol;
     }
     public boolean isShorted() {
         return shorted;
     }
-    public int getShares() {
-        return shares;
+    public int getQuantity() {
+        return quantity;
     }
-    public double getPurchasePrice() {
-        return purchasePrice;
+    public double getStartPrice() {
+        return startPrice;
     }
     public double mockCurrentPrice;
     public double getCurrentPrice() {
@@ -36,17 +40,19 @@ public class Stock implements Parcelable, Serializable {
     }
 
     // setter
+    public void setId(int id) { this.id = id; }
+    public void setPortfolioId(int portfolioId) { this.portfolioId = portfolioId; }
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
     public void setShorted(boolean shorted) {
         this.shorted = shorted;
     }
-    public void setShares(int shares) {
-        this.shares = shares;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
-    public void setPurchasePrice(double purchasePrice) {
-        this.purchasePrice = purchasePrice;
+    public void setStartPrice(double startPrice) {
+        this.startPrice = startPrice;
     }
     public void setCurrentPrice(double currentPrice) { this.currentPrice = currentPrice; }
 
@@ -59,8 +65,8 @@ public class Stock implements Parcelable, Serializable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(symbol);
         dest.writeByte((byte) (shorted ? 1 : 0));
-        dest.writeInt(shares);
-        dest.writeDouble(purchasePrice);
+        dest.writeInt(quantity);
+        dest.writeDouble(startPrice);
         dest.writeDouble(currentPrice);
     }
 
@@ -69,8 +75,8 @@ public class Stock implements Parcelable, Serializable {
             Stock stock = new Stock();
             stock.symbol = in.readString();
             stock.shorted = in.readByte() != 0;
-            stock.shares = in.readInt();
-            stock.purchasePrice = in.readDouble();
+            stock.quantity = in.readInt();
+            stock.startPrice = in.readDouble();
             stock.currentPrice = in.readDouble();
             return stock;
         }
