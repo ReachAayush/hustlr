@@ -251,4 +251,64 @@ router.get('/loadshort', function(req, res, next) {
    db.checkIfUserExists(username, success, failure);
 });
 
+/* handle get request for loading sell stock page */
+router.get('/sellstock', function(req, res, next) {
+   var username = req.query.username;
+   var id = req.query.ownedStockId;
+   var quantity = req.query.quantity;
+   console.log("User " + username + " tried to sell " + quantity + " shares of owned_stock_id:" + id);
+
+   if(quantity<0){
+      return sendJson({result: 'fail', reason: 'cannot sell negative amount'}, res);
+   }else{
+
+      var failure = function(){
+         return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+      };
+
+      var success = function(){
+         var cashCallback = function(cash){
+            var validOwnedStockIdCallback = function(owned_stock){
+               if(owned_stock){
+                  var os_symbol = owned_stock.symbol;
+                  var os_quantity = owned_stock.quantity;
+                  var os_start_price = owned_stock.start_price;
+
+                  if(quantity <= os_quantity){
+                     var portfolioIdCallback = function(portfolio_id){
+                        var priceCallback = function(price){
+                           if(price){
+                              var createdTransactionCallback = function(newCashAmount){
+                                 return sendJson({result: 'success', cash: newCashAmount}, res);
+                              }
+                              db.sellStock(username, portfolio_id, id, os_quantity, quantity, price, cash, createdTransactionCallback);
+                           }else{
+                           //means stock that has been bought no longer has price, very rare but possible i guess
+                           return sendJson({result: 'fail', reason: 'internal error'}, res);
+                        }
+                     }
+                     getStockPrice(os_symbol, priceCallback);
+                  }
+
+                  db.getUserPortfolioId(username, portfolioIdCallback);
+
+               }else{
+                  return sendJson({result: 'fail', reason: 'tried selling more shares than you have'}, res);
+               }
+            }else{
+               //means id sent from app doesn't match owned_stock id (AKA NEVER SHOULD GET HERE)
+               return sendJson({result: 'fail', reason: 'internal error'}, res);
+            }
+         };
+
+         db.getOwnedStockById(id, validOwnedStockIdCallback);
+      }
+
+      db.getUserCash(username, cashCallback);
+   }
+
+   db.checkIfUserExists(username, success, failure);
+}
+});
+
 module.exports = router;
