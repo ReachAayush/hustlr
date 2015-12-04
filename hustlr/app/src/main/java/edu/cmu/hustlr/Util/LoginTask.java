@@ -29,17 +29,15 @@ import edu.cmu.hustlr.Intent.LoginIntent;
 /**
  * Created by rueiminl on 2015/11/26.
  */
-public class LoginTask extends AsyncTask<String, Void, String> {
-    private boolean test = true; // set false to communicate with real server (please modify MyGlobal.host and port if necessary)
+public class LoginTask extends HttpRequestTask {
+    private boolean test = false; // set false to communicate with real server (please modify MyGlobal.host and port if necessary)
     private Context context;
     public LoginTask(Context context) {
         this.context = context;
     }
 
     @Override
-    protected String doInBackground(String... params) {
-        if (test)
-            return "{'result':'success'}";
+    protected String getUrl() {
         StringBuffer address = new StringBuffer();
         address.append("http://");
         address.append(MyGlobal.host);
@@ -50,55 +48,7 @@ public class LoginTask extends AsyncTask<String, Void, String> {
         address.append(MyGlobal.me.getName());
         address.append("&password=");
         address.append(MyGlobal.me.getPassword());
-        URL url = null;
-        try {
-            url = new URL(address.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        HttpURLConnection httpURLConnection = null;
-        try {
-            httpURLConnection = (HttpURLConnection)url.openConnection();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            httpURLConnection.setRequestMethod("GET");
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        }
-        httpURLConnection.setRequestProperty("Content-Type", "application/json");
-        int responseCode = 0;
-        try {
-            responseCode = httpURLConnection.getResponseCode();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (responseCode != 200) {
-            Toast.makeText(context, "responseCode = " + responseCode, Toast.LENGTH_LONG).show();
-            return null;
-        }
-        BufferedReader in = null;
-        try {
-            in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-        try {
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return response.toString();
+        return address.toString();
     }
 
     @Override
