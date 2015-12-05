@@ -9,23 +9,28 @@ import org.json.JSONObject;
 import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
-import edu.cmu.hustlr.Intent.HomeAccountIntent;
+import edu.cmu.hustlr.Intent.LoadPriceIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
  */
-// goto home account page
-public class HomeAccountTask extends HttpRequestTask {
-    private Context context;
-    public HomeAccountTask(Context context) {
-        this.context = context;
-    }
+// if success => goto load price page automatically
+abstract public class LoadBuyShortTask extends HttpRequestTask {
 
+    abstract protected String getWebPage();
+    abstract protected String getType();
+    String symbol;
+    Context context;
+    LoadBuyShortTask(Context context, String symbol) {
+        this.context = context;
+        this.symbol = symbol;
+    }
     @Override
     protected String getUrl() {
         TreeMap<String, String> params = new TreeMap<String, String>();
         params.put("username", MyGlobal.me.getName());
-        return getUrl("getuser", params);
+        params.put("symbol", symbol);
+        return getUrl(getWebPage(), params);
     }
 
     @Override
@@ -35,17 +40,10 @@ public class HomeAccountTask extends HttpRequestTask {
                 Toast.makeText(context, json.get("reason").toString(), Toast.LENGTH_LONG).show();
                 return;
             }
-            // backup username
-            String username = MyGlobal.me.getName();
-
-            MyGlobal.me = JsonToUser.transfer(json);
-            MyGlobal.me.setName(username);
-
-            // goto home account page
-            context.startActivity(new HomeAccountIntent(context));
+            double price = json.getDouble("price");
+            context.startActivity(new LoadPriceIntent(context, symbol, price, getType()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 }

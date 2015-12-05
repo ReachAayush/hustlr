@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  * Created by rueiminl on 2015/12/4.
  */
-public class LoadBuyTask extends LoadPriceTask {
+public class LoadBuyTask extends LoadBuyShortTask {
 
     public LoadBuyTask(Context context, String symbol) {
         super(context, symbol);

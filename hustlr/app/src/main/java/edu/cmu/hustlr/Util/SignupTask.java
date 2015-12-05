@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
-import edu.cmu.hustlr.Intent.LoginIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
@@ -36,7 +35,7 @@ public class SignupTask extends HttpRequestTask {
                 Toast.makeText(context, json.get("reason").toString(), Toast.LENGTH_LONG).show();
                 return;
             }
-            new HomeAccountTask(context).execute();
+            new AccountHomeTask(context).execute();
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" $0.00"
-        android:id="@+id/textStockCurrentPrice"
+        android:id="@+id/textStockListCurrentPrice"
         />
 
     <TextView
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" $0.00"
-        android:id="@+id/textStockPurchasePrice"
+        android:id="@+id/textStockListStartPrice"
         />
 
     <TextView
@@ -42,6 +42,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" 2000"
-        android:id="@+id/textStockShares"
+        android:id="@+id/textStockListQuantity"
         />
 </LinearLayout>

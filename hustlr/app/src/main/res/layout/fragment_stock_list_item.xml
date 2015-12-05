@@ -7,41 +7,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="APPL "
-        android:id="@+id/textStockSymbol"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" Cur: "
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" $0.00"
-        android:id="@+id/textStockCurrentPrice"
+        android:id="@+id/textStockListSymbol"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Purchase: "
+        android:text=" Start Price: "
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" $0.00"
-        android:id="@+id/textStockPurchasePrice"
+        android:id="@+id/textStockListStartPrice"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Shares: "
+        android:text=" Quantity: "
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" 2000"
-        android:id="@+id/textStockShares"
+        android:id="@+id/textStockListQuantity"
         />
 </LinearLayout>

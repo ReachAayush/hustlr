@@ -1,6 +1,5 @@
 package edu.cmu.hustlr.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.TextView;
 
 import edu.cmu.hustlr.R;
 import edu.cmu.hustlr.Util.BuyStockTask;
-import edu.cmu.hustlr.Util.HomeAccountTask;
+import edu.cmu.hustlr.Util.AccountHomeTask;
 import edu.cmu.hustlr.Util.ShortStockTask;
 
 // come from buy/short button in home account page
@@ -54,7 +53,7 @@ public class BuyShortActivity extends AppCompatActivity {
         buttonCancel.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        new HomeAccountTask(getApplicationContext()).execute();
+                        new AccountHomeTask(getApplicationContext()).execute();
                     }
                 }
         );

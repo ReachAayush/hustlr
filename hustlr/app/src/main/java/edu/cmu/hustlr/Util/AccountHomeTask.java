@@ -9,15 +9,15 @@ import org.json.JSONObject;
 import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
-
+import edu.cmu.hustlr.Intent.AccountHomeIntent;
 
 /**
- * Created by rueiminl on 2015/11/26.
+ * Created by rueiminl on 2015/12/4.
  */
-// if success => goto home account page automatically
-public class LoginTask extends HttpRequestTask {
+// goto home account page
+public class AccountHomeTask extends HttpRequestTask {
     private Context context;
-    public LoginTask(Context context) {
+    public AccountHomeTask(Context context) {
         this.context = context;
     }
 
@@ -25,20 +25,27 @@ public class LoginTask extends HttpRequestTask {
     protected String getUrl() {
         TreeMap<String, String> params = new TreeMap<String, String>();
         params.put("username", MyGlobal.me.getName());
-        params.put("password", MyGlobal.me.getPassword());
-        return getUrl("login", params);
+        return getUrl("getuser", params);
     }
 
     @Override
     protected void onPostExecute(JSONObject json) {
         try {
-            if (json.getString("result").equals("fail")) {
+            if (json.get("result").equals("fail")) {
                 Toast.makeText(context, json.get("reason").toString(), Toast.LENGTH_LONG).show();
                 return;
             }
-            new AccountHomeTask(context).execute();
+            // backup username
+            String username = MyGlobal.me.getName();
+
+            MyGlobal.me = JsonToUser.transfer(json);
+            MyGlobal.me.setName(username);
+
+            // goto home account page
+            context.startActivity(new AccountHomeIntent(context));
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
     }
 }

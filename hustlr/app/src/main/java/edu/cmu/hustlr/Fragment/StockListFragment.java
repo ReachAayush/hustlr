@@ -1,11 +1,11 @@
 package edu.cmu.hustlr.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -13,8 +13,11 @@ import edu.cmu.hustlr.Entities.*;
 
 import java.text.DecimalFormat;
 import java.util.*;
-import edu.cmu.hustlr.Activity.*;
+
 import edu.cmu.hustlr.R;
+import edu.cmu.hustlr.Util.LoadCoverTask;
+import edu.cmu.hustlr.Util.LoadSellCoverTask;
+import edu.cmu.hustlr.Util.LoadSellTask;
 
 /**
  * Created by rueiminl on 2015/11/13.
@@ -38,13 +41,17 @@ public class StockListFragment extends ListFragment {
         setListAdapter(adapter);
     }
 
+    // send http request of sell/cover stock (for price)
+    // if success => goto sell or cover page
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         // get the Stock from the adapter
         Stock stock = ((StockAdapter)getListAdapter()).getItem(position);
-        // start an instance of StudentPagerActivity
-        Intent i = new Intent(getActivity(), SellCoverActivity.class);
-        startActivityForResult(i, 0);
+        if (stock.isShorted()) {
+            new LoadCoverTask(getActivity().getApplicationContext(), stock.getId()).execute();
+        } else {
+            new LoadSellTask(getActivity().getApplicationContext(), stock.getId()).execute();
+        }
     }
 
     private class StockAdapter extends ArrayAdapter<Stock> {
@@ -62,14 +69,19 @@ public class StockListFragment extends ListFragment {
 
             // configure the view for this stock
             Stock stock = getItem(position);
-            TextView textStockSymbol = (TextView)convertView.findViewById(R.id.textStockSymbol);
+            TextView textStockSymbol = (TextView)convertView.findViewById(R.id.textStockListSymbol);
             textStockSymbol.setText(stock.getSymbol());
-            TextView textStockCurrentPrice = (TextView)convertView.findViewById(R.id.textStockCurrentPrice);
-            textStockCurrentPrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getCurrentPrice()));
-            TextView textStockPurchasePrice = (TextView)convertView.findViewById(R.id.textStockPurchasePrice);
-            textStockPurchasePrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getStartPrice()));
-            TextView textStockShares = (TextView)convertView.findViewById(R.id.textStockShares);
-            textStockShares.setText(String.valueOf(stock.getQuantity()));
+            TextView textStockStartPrice = (TextView)convertView.findViewById(R.id.textStockListStartPrice);
+            textStockStartPrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getStartPrice()));
+            TextView textQuantity = (TextView)convertView.findViewById(R.id.textStockListQuantity);
+            textQuantity.setText(String.valueOf(stock.getQuantity()));
+//            Button buttonSubmit = (Button)convertView.findViewById(R.id.buttonStockListSellCover);
+//            buttonSubmit.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
             return convertView;
         }
     }

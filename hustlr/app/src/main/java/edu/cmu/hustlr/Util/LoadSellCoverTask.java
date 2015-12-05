@@ -9,27 +9,27 @@ import org.json.JSONObject;
 import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
+import edu.cmu.hustlr.Entities.Stock;
 import edu.cmu.hustlr.Intent.LoadPriceIntent;
+import edu.cmu.hustlr.Intent.LoadSellCoverIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
  */
-// if success => goto load price page automatically
-abstract public class LoadPriceTask extends HttpRequestTask {
-
-    abstract protected String getWebPage();
-    abstract protected String getType();
-    String symbol;
-    Context context;
-    LoadPriceTask(Context context, String symbol) {
+abstract public class LoadSellCoverTask extends HttpRequestTask {
+    abstract String getWebPage();
+    abstract boolean isShort();
+    private Context context;
+    private int ownedStockId = 0;
+    public LoadSellCoverTask(Context context, int ownedStockId) {
         this.context = context;
-        this.symbol = symbol;
+        this.ownedStockId = ownedStockId;
     }
     @Override
     protected String getUrl() {
         TreeMap<String, String> params = new TreeMap<String, String>();
         params.put("username", MyGlobal.me.getName());
-        params.put("symbol", symbol);
+        params.put("ownedStockId", String.valueOf(ownedStockId));
         return getUrl(getWebPage(), params);
     }
 
@@ -40,8 +40,14 @@ abstract public class LoadPriceTask extends HttpRequestTask {
                 Toast.makeText(context, json.get("reason").toString(), Toast.LENGTH_LONG).show();
                 return;
             }
-            double price = json.getDouble("price");
-            context.startActivity(new LoadPriceIntent(context, symbol, price, getType()));
+            Stock stock = new Stock();
+            stock.setId(json.getInt("id"));
+            stock.setSymbol(json.getString("symbol"));
+            stock.setQuantity(json.getInt("quantity"));
+            stock.setCurrentPrice(json.getDouble("curPrice"));
+            stock.setStartPrice(json.getDouble("startPrice"));
+            stock.setShorted(isShort());
+            context.startActivity(new LoadSellCoverIntent(context, stock));
         } catch (JSONException e) {
             e.printStackTrace();
         }
