@@ -10,11 +10,10 @@ import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
 import edu.cmu.hustlr.Intent.AccountHomeIntent;
-
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the request "getuser". Would be redirected to AccountHomeActivity.
  */
-// goto home account page
 public class AccountHomeTask extends HttpRequestTask {
     private Context context;
     public AccountHomeTask(Context context) {

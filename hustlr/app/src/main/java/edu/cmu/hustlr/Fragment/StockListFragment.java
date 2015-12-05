@@ -21,6 +21,13 @@ import edu.cmu.hustlr.Util.LoadSellTask;
 
 /**
  * Created by rueiminl on 2015/11/13.
+ * A Fragment to show the list of stocks a user has.
+ * Views (for each item):
+ *   Text: symbol, startPrice, quantity
+ *   Button: the whole item
+ * xml: fragment_stock_list_item.xml with R.id = typeStockListWidgetname
+ * Page flow:
+ *   click an item: send a "loadsell/cover" request (based on isShort) to the backend, and would be redirected to SellCoverActivity.
  */
 public class StockListFragment extends ListFragment {
 
@@ -81,13 +88,6 @@ public class StockListFragment extends ListFragment {
             textStockStartPrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getStartPrice()));
             TextView textQuantity = (TextView)convertView.findViewById(R.id.textStockListQuantity);
             textQuantity.setText(String.valueOf(stock.getQuantity()));
-//            Button buttonSubmit = (Button)convertView.findViewById(R.id.buttonStockListSellCover);
-//            buttonSubmit.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
             return convertView;
         }
     }

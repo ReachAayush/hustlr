@@ -51,12 +51,7 @@
         <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editCash"
-        android:layout_below="@+id/editConfirmPassword"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editConfirmPassword"
-        android:layout_alignEnd="@+id/editConfirmPassword"
+        android:id="@+id/editSignupCash"
         android:hint="initial cash" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
@@ -64,12 +59,7 @@
         <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editEmail"
-        android:layout_below="@+id/editCash"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:id="@+id/editSignupEmail"
         android:hint="EMail" />
     </android.support.design.widget.TextInputLayout>
     <Button
@@ -77,13 +67,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signup"
-        android:id="@+id/buttonSignup"
+        android:id="@+id/buttonSignupSubmit"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonSignupLogin"
         android:layout_gravity="center_horizontal"
         />
 

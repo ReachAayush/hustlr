@@ -12,6 +12,7 @@ import edu.cmu.hustlr.Entities.MyGlobal;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the request "sell/coverstock". Would be redirected to the SellCoverActivity.
  */
 abstract public class SellCoverStockTask extends HttpRequestTask {
     abstract protected String getWebPage();

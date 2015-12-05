@@ -1,6 +1,5 @@
 package edu.cmu.hustlr.Activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,18 @@ import edu.cmu.hustlr.Util.AccountHomeTask;
 import edu.cmu.hustlr.Util.CoverStockTask;
 import edu.cmu.hustlr.Util.SellStockTask;
 
-// come from sell/cover intent
+/**
+ *  Render a page where user could sell/cover his/her own stock.
+ *  Views:
+ *    Text: symbol, startPrice, currentPrice, quantity (own)
+ *    Edit: quantity (wanted)
+ *    Button: Sell/Cover, Cancel
+ *  Page flow:
+ *    from AccountHomeActivity (StockListFragment => click an item => LoadSellTask/LoadCoverTask => LoadSellCoverIntent => this)
+ *      passed data from LoadSellCoverIntent: id, symbol, startPrice, currentPrice, quantity, isShort
+ *    click Sell/Cover => send a "sell/coverstock" request to the backend (SellStockTask/CoverStockTask), and would be redirected to the home page
+ *    click Cancel => goto the home page (AccountHomeTask)
+ */
 public class SellCoverActivity extends AppCompatActivity {
 
     @Override

@@ -84,7 +84,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editHomeSearchStock"
+                android:id="@+id/editSearchStockSymbol"
                 android:hint="Stock Symbol" />
         </android.support.design.widget.TextInputLayout>
 

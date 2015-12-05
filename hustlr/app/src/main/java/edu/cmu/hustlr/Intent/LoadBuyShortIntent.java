@@ -5,12 +5,13 @@ import android.content.Intent;
 
 import edu.cmu.hustlr.Activity.BuyShortActivity;
 
-/**
- * Created by rueiminl on 2015/12/4.
- */
 
-public class LoadPriceIntent extends Intent {
-    public LoadPriceIntent(Context context, String symbol, double price, String type) {
+/**
+ * A Intent to BuyShortActivity page.
+ * from LoadBuy/ShortTask.
+ */
+public class LoadBuyShortIntent extends Intent {
+    public LoadBuyShortIntent(Context context, String symbol, double price, String type) {
         // type: Buy or Short
         super(context, BuyShortActivity.class);
         this.putExtra("symbol", symbol);

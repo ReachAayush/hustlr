@@ -10,11 +10,10 @@ import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
 
-
 /**
  * Created by rueiminl on 2015/11/26.
+ * A task to get the response of the request "login". Would be redirected to the AccountHomeActivity.
  */
-// if success => goto home account page automatically
 public class LoginTask extends HttpRequestTask {
     private Context context;
     public LoginTask(Context context) {

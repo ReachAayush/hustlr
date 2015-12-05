@@ -28,6 +28,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.cmu.hustlr.Entities.*;
+import edu.cmu.hustlr.Intent.LoadSignupIntent;
 import edu.cmu.hustlr.R;
 import edu.cmu.hustlr.Util.LoginTask;
 
@@ -38,6 +39,13 @@ import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
+ * Views:
+ *   Edit: username, password
+ *   Button: Signin, Register
+ * Page flow:
+ *   init page.
+ *   click Signin: send a "login" request to the backend (LoginTask), and would be redirected to AccountHomeActivity if succeed.
+ *   click Register: goto the signup page (LoadSignupIntent)
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -74,8 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonSignup.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                        startActivity(intent);
+                        startActivity(new LoadSignupIntent(getApplicationContext()));
                     }
                 }
         );
@@ -86,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         // TODO ask data from server
-                        MyGlobal.me = User.createMockUser();
+                        MyGlobal.me = new User();
 
                         EditText editUsername = (EditText)findViewById(R.id.loginUsername);
                         String username = editUsername.getText().toString();

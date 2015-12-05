@@ -14,6 +14,7 @@ import edu.cmu.hustlr.Intent.FriendHomeIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the request "getotheruser". Would be redirected to the FriendHomeActivity.
  */
 public class VisitFriendTask extends HttpRequestTask {
     private Context context;

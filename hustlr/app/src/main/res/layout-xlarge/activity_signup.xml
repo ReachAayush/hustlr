@@ -77,13 +77,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Signup"
-        android:id="@+id/buttonSignup"
+        android:id="@+id/buttonSignupSubmit"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonSignupLogin"
         android:layout_gravity="center_horizontal"
         />
 

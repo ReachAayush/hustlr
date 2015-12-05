@@ -13,6 +13,13 @@ import edu.cmu.hustlr.Util.VisitFriendTask;
 
 /**
  * Created by rueiminl on 2015/11/13.
+ * A Fragment for user to search another user's portfolio.
+ * Views:
+ *   Edit: name
+ *   Button: Search
+ * xml: fragment_search_fragment with R.id = typeSearchFriendWidgetName
+ * Page flow:
+ *   click Search: send a "getotheruser" request to the backend (VisitFriendTask)
  */
 public class SearchFriendFragment extends Fragment {
 

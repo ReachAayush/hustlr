@@ -21,6 +21,7 @@ import edu.cmu.hustlr.Intent.LoginIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the http request.
  */
 public abstract class HttpRequestTask extends AsyncTask<String, Void, JSONObject> {
     abstract protected String getUrl();

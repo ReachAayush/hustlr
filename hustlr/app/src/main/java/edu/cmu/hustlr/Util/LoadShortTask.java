@@ -4,6 +4,7 @@ import android.content.Context;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the request "loadshort". Would be redirected to the BuyShortActivity.
  */
 public class LoadShortTask extends LoadBuyShortTask {
     public LoadShortTask(Context context, String symbol) {

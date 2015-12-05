@@ -9,12 +9,12 @@ import org.json.JSONObject;
 import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
-import edu.cmu.hustlr.Intent.LoadPriceIntent;
+import edu.cmu.hustlr.Intent.LoadBuyShortIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the request "loadbuy/short". Would be redirected to the BuyShortActivity.
  */
-// if success => goto load price page automatically
 abstract public class LoadBuyShortTask extends HttpRequestTask {
 
     abstract protected String getWebPage();
@@ -41,7 +41,7 @@ abstract public class LoadBuyShortTask extends HttpRequestTask {
                 return;
             }
             double price = json.getDouble("price");
-            context.startActivity(new LoadPriceIntent(context, symbol, price, getType()));
+            context.startActivity(new LoadBuyShortIntent(context, symbol, price, getType()));
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -14,16 +14,22 @@ import edu.cmu.hustlr.R;
 import edu.cmu.hustlr.Util.LoadBuyTask;
 import edu.cmu.hustlr.Util.LoadShortTask;
 
-// fragments: summary of portfolio (SummaryFragment), list of stocks (StockListFragment), search friend (SearchFriendFragment), search stock (SearchStockFragment)
-// relative xml: activity_account_home.xml
-// page flow:
-//   in SearchFriendFragment:
-//     click search => goto other's home page (VisitFriendTask)
-//   in StockListFragment:
-//     click stock => goto sell/cover page (LoadSellTask or LoadCoverTask depending on isShort)
-//   in SearchStockFragment:
-//     click buy => goto buy stock page (LoadBuyTask)
-//     click short => goto short stock page (LoadShortTask)
+/**
+ * The main home page to summary the user's portfolio.
+ * Views:
+ *   Fragments: SearchFriendFragment, SummaryFragment, StockListFragment, SearchStockFragment
+ * xml: activity_account_home.xml
+ * Page flow:
+ *   from LoginActivity (click Signin => LoginTask => AccountHomeTask => AccountHomeIntent => this)
+ *   from SignupActivity (click Signup => SignupTask => AccountHomeTask => AccountHomeIntent => this)
+ *   from SellCoverActivity/BuyShortActivity (click Cancel => AccountHomeTask => AccountHomeIntent => this)
+ *   from SellCoverActivity (click Sell/Cover => Sell/CoverStockTask => AccountHomeIntent => this)
+ *   from BuyShortActivity (click Buy/Short => Buy/ShortStockTask => AccountHomeIntent => this)
+ *   click Search in SearchFriendFragment => send a "getotheruser" request (VisitFriendTask), and would be redirected to FriendHomeActivity.
+ *   click an item in StockListFragment => send a "loadsell/cover" request (LoadSell/CoverTask), and would be redirected to SellCoverActivity.
+ *   click Buy in SearchStockFragment => send a "loadbuy" request (LoadBuyTask), and would be redirected to BuyShortActivity.
+ *   click Short in SearchStockFragment => send a "loadshort" request (LoadShortTask), and would be redirected to BuyShortActivity.
+ */
 public class AccountHomeActivity extends AppCompatActivity {
 
     @Override

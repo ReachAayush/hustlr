@@ -12,7 +12,18 @@ import edu.cmu.hustlr.Util.BuyStockTask;
 import edu.cmu.hustlr.Util.AccountHomeTask;
 import edu.cmu.hustlr.Util.ShortStockTask;
 
-// come from buy/short button in home account page
+/**
+ * A page for user to buy/short a stock with specific quantity.
+ * Views:
+ *   Text: symbol, price
+ *   Edit: quantity
+ *   Button: Buy/Short, Cancel
+ * xml: activity_buy_short.xml with R.id = typeBuyShortWidgetName
+ * Page flow:
+ *   from AccountHomeActivity (SearchStockFragment => click Buy => LoadBuyTask => LoadBuyShortIntent => this)
+ *   click Buy/Short => send a "buy/shortstock" request to the backend (Buy/ShortStockTask), and would be redirected to AccountHomeActivity
+ *   click Cancel => goto AccountHomeActivity
+ */
 public class BuyShortActivity extends AppCompatActivity {
 
     @Override

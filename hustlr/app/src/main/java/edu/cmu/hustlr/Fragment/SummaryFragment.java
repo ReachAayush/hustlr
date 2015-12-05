@@ -5,15 +5,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.cmu.hustlr.R;
-import edu.cmu.hustlr.Util.VisitFriendTask;
-
 /**
  * Created by rueiminl on 2015/12/4.
+ * A Fragment shows the summary of the user's portfolio.
+ * Views:
+ *   Text: username, cash
+ * xml: fragment_summary.xml with R.id = typeSummaryWidgetname
  */
 public class SummaryFragment extends Fragment {
     private String username;

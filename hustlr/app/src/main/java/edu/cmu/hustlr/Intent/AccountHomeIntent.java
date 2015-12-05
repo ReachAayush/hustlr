@@ -8,6 +8,7 @@ import edu.cmu.hustlr.Entities.MyGlobal;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A Intent to AccountHomeActivity page.
  */
 public class AccountHomeIntent extends Intent {
     public AccountHomeIntent(Context context) {

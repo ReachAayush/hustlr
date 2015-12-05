@@ -13,6 +13,7 @@ import edu.cmu.hustlr.Intent.AccountHomeIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the request "shortstock". Would be redirected to the AccountHomeActivity.
  */
 public class ShortStockTask extends BuyShortStockTask {
     public ShortStockTask(Context context, String symbol, int quantity) {

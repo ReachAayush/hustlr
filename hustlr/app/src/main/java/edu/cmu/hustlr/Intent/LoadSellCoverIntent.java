@@ -9,8 +9,9 @@ import edu.cmu.hustlr.Entities.Stock;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * An Intent to SellCoverActivity page.
+ * from LoadSell/CoverTask.
  */
-// goto sell/cover activity
 public class LoadSellCoverIntent extends Intent {
     public LoadSellCoverIntent(Context context, Stock stock) {
         super(context, SellCoverActivity.class);

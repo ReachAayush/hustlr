@@ -12,8 +12,8 @@ import edu.cmu.hustlr.Entities.MyGlobal;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A task to get the response of the request "signup". Would be redirected to the AccountHomeActivity.
  */
-// if success => goto home account page automatically
 public class SignupTask extends HttpRequestTask {
     private Context context;
     public SignupTask(Context context) {
@@ -25,6 +25,7 @@ public class SignupTask extends HttpRequestTask {
         TreeMap<String, String> params = new TreeMap<String, String>();
         params.put("username", MyGlobal.me.getName());
         params.put("password", MyGlobal.me.getPassword());
+        params.put("cash", String.valueOf(MyGlobal.me.getCash()));
         return getUrl("signup", params);
     }
 

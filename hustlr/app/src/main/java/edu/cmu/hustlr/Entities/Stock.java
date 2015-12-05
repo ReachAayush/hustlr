@@ -33,10 +33,7 @@ public class Stock implements Parcelable, Serializable {
     public double getStartPrice() {
         return startPrice;
     }
-    public double mockCurrentPrice;
-    public double getCurrentPrice() {
-        return currentPrice;
-    }
+    public double getCurrentPrice() { return currentPrice; }
 
     // setter
     public void setId(int id) { this.id = id; }

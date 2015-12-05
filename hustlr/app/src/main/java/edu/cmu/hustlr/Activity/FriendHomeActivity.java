@@ -1,6 +1,5 @@
 package edu.cmu.hustlr.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,8 +14,18 @@ import edu.cmu.hustlr.Fragment.SummaryFragment;
 import edu.cmu.hustlr.R;
 import edu.cmu.hustlr.Util.AccountHomeTask;
 
-// fragments: search friend, summary, stock list
-// R.id: typeFriendWidgetName
+/*
+ * A page to show other users' portfolio.
+ * Views:
+ *   Fragments: SearchFriendFragment, SummaryFragment, StockListFragment(readOnly = true)
+ *   Button: BackHome
+ * xml: activity_friend_home.xml with R.id = typeFriendWidgetName (eg. buttonFriendBackHome)
+ * Page flow:
+ *   from AccountHomeActivity (SearchFriendFragment => click Search => VisitFriendTask => FriendHomeIntent => this)
+ *   from FriendHomeAcitivity (SearchFriendFragment => click Search => VisitFriendTask => FriendHomeIntent => this)
+ *   click Search in SearchFriendFragment => send a "getotheruser" request (VisitFriendTask), and would be redirected to FriendHomeActivity.
+ *   click BackHome => AccountHomeTask
+ */
 public class FriendHomeActivity extends AppCompatActivity {
 
     @Override

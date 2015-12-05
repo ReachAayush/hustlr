@@ -10,6 +10,8 @@ import edu.cmu.hustlr.Entities.User;
 
 /**
  * Created by rueiminl on 2015/12/4.
+ * A Intent to FriendHomeActivity page.
+ * from VisitFriendTask.
  */
 public class FriendHomeIntent extends Intent {
     public FriendHomeIntent(Context context) {
