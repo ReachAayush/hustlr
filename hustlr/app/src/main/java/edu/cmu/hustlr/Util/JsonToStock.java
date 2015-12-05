@@ -16,7 +16,7 @@ public class JsonToStock {
         stock.setSymbol(obj.getString("symbol"));
         stock.setQuantity(obj.getInt("quantity"));
         stock.setStartPrice(obj.getDouble("start_price"));
-        stock.setShorted(obj.getBoolean("is_short"));
+        stock.setShorted(obj.getInt("is_short") == 1);
         return stock;
     }
 }
