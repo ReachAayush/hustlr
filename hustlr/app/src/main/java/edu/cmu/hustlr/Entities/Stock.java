@@ -35,8 +35,7 @@ public class Stock implements Parcelable, Serializable {
     }
     public double mockCurrentPrice;
     public double getCurrentPrice() {
-        // TODO: use market API to get the real time price
-        return mockCurrentPrice;
+        return currentPrice;
     }
 
     // setter
