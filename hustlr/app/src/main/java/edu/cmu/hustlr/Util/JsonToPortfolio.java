@@ -17,7 +17,9 @@ public class JsonToPortfolio {
         for (int i = 0; i < stocks.length(); i++) {
             JSONObject jsonStock = stocks.getJSONObject(i);
             Stock stock = JsonToStock.transfer(jsonStock);
-            portfolio.addStock(stock);
+            // only add those stocks with size > 0
+            if (stock.getQuantity() > 0)
+                portfolio.addStock(stock);
         }
         return portfolio;
     }
