@@ -1,6 +1,5 @@
 package edu.cmu.hustlr.Activity;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +11,14 @@ import android.widget.TextView;
 
 import edu.cmu.hustlr.Entities.*;
 import edu.cmu.hustlr.Fragment.*;
-import edu.cmu.hustlr.Intent.*;
 import edu.cmu.hustlr.R;
 import edu.cmu.hustlr.Util.LoadBuyTask;
 import edu.cmu.hustlr.Util.LoadShortTask;
 
 import java.text.DecimalFormat;
 
+// fragments: summary of portfolio, list of portfolio, search friend, search stock (to buy or to short)
+// relative xml: activity_account_home.xml
 public class AccountHomeActivity extends AppCompatActivity {
 
     @Override
@@ -28,23 +28,13 @@ public class AccountHomeActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         Fragment searchFriendFragment = SearchFriendFragment.newInstance();
+        Fragment summaryFragment = SummaryFragment.newInstance(MyGlobal.me.getName(), MyGlobal.me.getCash());
         Fragment stockListFragment = StockListFragment.getNewInstance(MyGlobal.me.getPortfolio().getAllStocks());
         manager.beginTransaction()
-                .add(R.id.fragmentHomeSearchFriend, searchFriendFragment)
-                .add(R.id.fragmentHomeStockList, stockListFragment)
+                .add(R.id.fragmentSearchFriend, searchFriendFragment)
+                .add(R.id.fragmentSummary, summaryFragment)
+                .add(R.id.fragmentStockList, stockListFragment)
                 .commit();
-
-        // summary of my portfolio
-        // TODO add UserFragment
-        TextView textUsername = (TextView)findViewById(R.id.textHomeUsername);
-        textUsername.setText(MyGlobal.me.getName());
-        TextView textUserCash = (TextView)findViewById(R.id.textHomeUserCash);
-        textUserCash.setText(DecimalFormat.getCurrencyInstance().format(MyGlobal.me.getCash()));
-
-        Portfolio portfolio = MyGlobal.me.getPortfolio();
-        TextView textPortfolioCash = (TextView)findViewById(R.id.textHomePortfolioCash);
-        textPortfolioCash.setText(DecimalFormat.getCurrencyInstance().format(MyGlobal.me.getPortfolio().getCash()));
-        // TODO show transaction history somewhere
 
         // page flow
         // TODO add SearchStockFragment
@@ -68,13 +58,5 @@ public class AccountHomeActivity extends AppCompatActivity {
                     }
                 }
         );
-    }
-
-    public String getSearchedStock(){
-        return ((EditText) findViewById(R.id.editHomeSearchStock)).getText().toString();
-    }
-
-    public String getSearchedFriend(){
-        return ((EditText) findViewById(R.id.editHomeSearchFriend)).getText().toString();
     }
 }

@@ -14,8 +14,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:text="search a friend"
-        android:layout_toLeftOf="@+id/btnHomeSearchFriend"
-        android:layout_toStartOf="@+id/btnHomeSearchFriend" />
+        android:layout_toLeftOf="@+id/bottonHomeSearchFriend"
+        android:layout_toStartOf="@+id/bottonHomeSearchFriend" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,8 +32,8 @@
         android:text="$3,753"
         android:id="@+id/textCashValue"
         android:layout_below="@+id/textPortfolioLabel"
-        android:layout_alignRight="@+id/btnHomeSearchFriend"
-        android:layout_alignEnd="@+id/btnHomeSearchFriend" />
+        android:layout_alignRight="@+id/bottonHomeSearchFriend"
+        android:layout_alignEnd="@+id/bottonHomeSearchFriend" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/btnHomeSearchFriend"
+        android:id="@+id/bottonSearchFriend"
         android:layout_alignBottom="@+id/editHomeSearchFriend"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -72,8 +72,8 @@
         android:text="Bought"
         android:id="@+id/textBoughtPriceLabel"
         android:layout_alignTop="@+id/textCurrentPriceLabel"
-        android:layout_toLeftOf="@+id/btnHomeSearchFriend"
-        android:layout_toStartOf="@+id/btnHomeSearchFriend" />
+        android:layout_toLeftOf="@+id/bottonHomeSearchFriend"
+        android:layout_toStartOf="@+id/bottonHomeSearchFriend" />
 
     <TextView
         android:layout_width="wrap_content"

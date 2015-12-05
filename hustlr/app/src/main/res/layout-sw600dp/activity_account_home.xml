@@ -13,7 +13,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="User"
-            android:id="@+id/textHomeUsername" />
+            android:id="@+id/textSummaryUsername" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$0,000"
-            android:id="@+id/textHomeUserCash" />
+            android:id="@+id/textSummaryCash" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,7 +56,7 @@
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragmentHomeStockList" >
+        android:id="@+id/fragmentStockList" >
     </FrameLayout>
 
     <View
@@ -67,7 +67,7 @@
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragmentHomeSearchFriend">
+        android:id="@+id/fragmentSearchFriend">
     </FrameLayout>
 
     <!-- TODO SearchStockFragment (ref to SearchFriendFragment) -->
