@@ -101,8 +101,27 @@ var buyStock = function(username, portfolio_id, cash, symbol, quantity, price, c
 	});
 }
 
+var shortStock = function(username, portfolio_id, cash, symbol, quantity, price, callback){
+	var queryString = 'INSERT INTO owned_stock (id, portfolio_id, symbol, quantity, start_price, is_short) VALUES (NULL, ' + portfolio_id + ', \'' + symbol + '\', ' + quantity + ', ' + price + ', 1);';
+	connection.query(queryString, function(err, rows, fields) {
+		if (err) console.log(err);
+		updateCash(portfolio_id, cash + (price * quantity), callback);
+	});
+}
+
 var sellStock = function(username, portfolio_id, owned_stock_id, start_quant, sell_quant, curPrice, curCash, callback){
 	var newCashAmount = curCash + curPrice * sell_quant;
+	var newOwnedQuantity = start_quant - sell_quant;
+	var queryString = 'INSERT INTO transaction (id, owned_stock_id, portfolio_id, final_price) VALUES (NULL, ' + owned_stock_id + ', ' + portfolio_id + ', ' + curPrice + ');';
+	connection.query(queryString, function(err, rows, fields) {
+		if (err) console.log(err);
+		updateOwnedStockAmount(owned_stock_id, newOwnedQuantity);
+		updateCash(portfolio_id, newCashAmount, callback);
+	});
+}
+
+var coverStock = function(username, portfolio_id, owned_stock_id, start_quant, sell_quant, curPrice, curCash, callback){
+	var newCashAmount = curCash - curPrice * sell_quant;
 	var newOwnedQuantity = start_quant - sell_quant;
 	var queryString = 'INSERT INTO transaction (id, owned_stock_id, portfolio_id, final_price) VALUES (NULL, ' + owned_stock_id + ', ' + portfolio_id + ', ' + curPrice + ');';
 	connection.query(queryString, function(err, rows, fields) {
@@ -136,5 +155,7 @@ module.exports = {
 	getUserStocks: getUserStocks,
 	buyStock: buyStock,
 	getOwnedStockById: getOwnedStockById,
-	sellStock: sellStock
+	sellStock: sellStock,
+	shortStock: shortStock,
+	coverStock: coverStock
 }

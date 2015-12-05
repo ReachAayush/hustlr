@@ -191,7 +191,7 @@ router.get('/buystock', function(req, res, next) {
 router.get('/loadsell', function(req, res, next) {
    var username = req.query.username;
    var id = req.query.ownedStockId;
-   console.log("User " + username + " clicked sell on " + id);
+   console.log("User " + username + " clicked cover on " + id);
 
    var failure = function(){
       return sendJson({result: 'fail', reason: 'user does not exist'}, res);
@@ -294,6 +294,137 @@ router.get('/sellstock', function(req, res, next) {
 
                }else{
                   return sendJson({result: 'fail', reason: 'tried selling more shares than you have'}, res);
+               }
+            }else{
+               //means id sent from app doesn't match owned_stock id (AKA NEVER SHOULD GET HERE)
+               return sendJson({result: 'fail', reason: 'internal error'}, res);
+            }
+         };
+
+         db.getOwnedStockById(id, validOwnedStockIdCallback);
+      }
+
+      db.getUserCash(username, cashCallback);
+   }
+
+   db.checkIfUserExists(username, success, failure);
+}
+});
+
+/* handle get request for loading cover stock page */
+router.get('/loadcover', function(req, res, next) {
+   var username = req.query.username;
+   var id = req.query.ownedStockId;
+   console.log("User " + username + " clicked sell on " + id);
+
+   var failure = function(){
+      return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+   };
+
+   var success = function(){
+      var validOwnedStockIdCallback = function(owned_stock){
+         if(owned_stock){
+            var os_symbol = owned_stock.symbol;
+            var os_quantity = owned_stock.quantity;
+            var os_start_price = owned_stock.start_price;
+            
+            var priceCallback = function(price){
+               if(price){
+                  return sendJson({result: 'success', symbol: os_symbol, quantity: os_quantity, id: id, curPrice: price, startPrice: os_start_price}, res);
+               }else{
+                  //means stock that has been bought no longer has price, very rare but possible i guess
+                  return sendJson({result: 'fail', reason: 'internal error'}, res);
+               }
+            }
+
+            getStockPrice(os_symbol, priceCallback);
+         }else{
+            //means id sent from app doesn't match owned_stock id (AKA NEVER SHOULD GET HERE)
+            return sendJson({result: 'fail', reason: 'internal error'}, res);
+         }
+      };
+
+      db.getOwnedStockById(id, validOwnedStockIdCallback);
+   };
+
+   db.checkIfUserExists(username, success, failure);
+});
+
+/* handle get request for shorting stock */
+router.get('/shortstock', function(req, res, next) {
+   var username = req.query.username;
+   var symbol = req.query.symbol;
+   var quantity = req.query.quantity;
+   console.log("User " + username + " tried shorting " + quantity + " shares of " + symbol);
+
+   var failure = function(){
+      return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+   };
+
+   var success = function(){
+      var successCallback = function(cash){
+         var priceCallback = function(price){
+            if(price){
+                  var portfolioIdCallback = function(portfolio_id){
+                     var insertedCallback = function(newCashAmount){ return sendJson({result: 'success', cash: newCashAmount}, res); }
+                     db.shortStock(username, portfolio_id, cash, symbol, quantity, price, insertedCallback);
+                  }
+                  db.getUserPortfolioId(username, portfolioIdCallback);
+            }else{
+               //should never get here
+               return sendJson({result: 'fail', reason: 'stock does not exist'}, res);
+            }
+         };
+         getStockPrice(symbol, priceCallback);
+      };
+      db.getUserCash(username, successCallback);
+   };
+
+   db.checkIfUserExists(username, success, failure);
+});
+
+/* handle get request for selling stock */
+router.get('/coverstock', function(req, res, next) {
+   var username = req.query.username;
+   var id = req.query.ownedStockId;
+   var quantity = req.query.quantity;
+   console.log("User " + username + " tried to cover " + quantity + " shares of shorted owned_stock_id:" + id);
+
+   if(quantity<0){
+      return sendJson({result: 'fail', reason: 'cannot sell negative amount'}, res);
+   }else{
+      var failure = function(){
+         return sendJson({result: 'fail', reason: 'user does not exist'}, res);
+      };
+
+      var success = function(){
+         var cashCallback = function(cash){
+            var validOwnedStockIdCallback = function(owned_stock){
+               if(owned_stock){
+                  var os_symbol = owned_stock.symbol;
+                  var os_quantity = owned_stock.quantity;
+                  var os_start_price = owned_stock.start_price;
+
+                  if(quantity <= os_quantity){
+                     var portfolioIdCallback = function(portfolio_id){
+                        var priceCallback = function(price){
+                           if(price){
+                              var createdTransactionCallback = function(newCashAmount){
+                                 return sendJson({result: 'success', cash: newCashAmount}, res);
+                              }
+                              db.coverStock(username, portfolio_id, id, os_quantity, quantity, price, cash, createdTransactionCallback);
+                           }else{
+                           //means stock that has been bought no longer has price, very rare but possible i guess
+                           return sendJson({result: 'fail', reason: 'internal error'}, res);
+                        }
+                     }
+                     getStockPrice(os_symbol, priceCallback);
+                  }
+
+                  db.getUserPortfolioId(username, portfolioIdCallback);
+
+               }else{
+                  return sendJson({result: 'fail', reason: 'tried covering more shares than you have shorted'}, res);
                }
             }else{
                //means id sent from app doesn't match owned_stock id (AKA NEVER SHOULD GET HERE)
