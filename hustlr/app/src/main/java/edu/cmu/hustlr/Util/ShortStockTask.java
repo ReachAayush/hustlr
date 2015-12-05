@@ -6,31 +6,31 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.ContentHandler;
 import java.util.TreeMap;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
-import edu.cmu.hustlr.Intent.LoadPriceIntent;
+import edu.cmu.hustlr.Intent.HomeAccountIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
  */
-// if success => goto load price page automatically
-abstract public class LoadPriceTask extends HttpRequestTask {
-
-    abstract protected String getWebPage();
-    abstract protected String getType();
-    String symbol;
-    Context context;
-    LoadPriceTask(Context context, String symbol) {
+public class ShortStockTask extends HttpRequestTask {
+    private Context context;
+    private String symbol;
+    private int quantity;
+    public ShortStockTask(Context context, String symbol, int quantity) {
         this.context = context;
         this.symbol = symbol;
+        this.quantity = quantity;
     }
     @Override
     protected String getUrl() {
         TreeMap<String, String> params = new TreeMap<String, String>();
         params.put("username", MyGlobal.me.getName());
         params.put("symbol", symbol);
-        return getUrl(getWebPage(), params);
+        params.put("quantity", String.valueOf(quantity));
+        return getUrl("shortstock", params);
     }
 
     @Override
@@ -40,8 +40,8 @@ abstract public class LoadPriceTask extends HttpRequestTask {
                 Toast.makeText(context, json.get("reason").toString(), Toast.LENGTH_LONG).show();
                 return;
             }
-            double price = json.getDouble("price");
-            context.startActivity(new LoadPriceIntent(context, symbol, price, getType()));
+            // goto home account page
+            context.startActivity(new HomeAccountIntent(context));
         } catch (JSONException e) {
             e.printStackTrace();
         }
