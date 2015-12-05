@@ -24,11 +24,13 @@ import edu.cmu.hustlr.Util.LoadSellTask;
  */
 public class StockListFragment extends ListFragment {
 
-    private static final String STOCKS_ID = "STOCKS_ID";
-    public static StockListFragment getNewInstance(ArrayList<Stock> stocks) {
+    private boolean readOnly;
+
+    public static StockListFragment getNewInstance(ArrayList<Stock> stocks, boolean readOnly) {
         StockListFragment fragment = new StockListFragment();
         Bundle args = new Bundle();
-        args.putSerializable(STOCKS_ID, stocks);
+        args.putSerializable("stocks", stocks);
+        args.putBoolean("readOnly", readOnly);
         fragment.setArguments(args);
         return fragment;
     }
@@ -36,7 +38,9 @@ public class StockListFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayList<Stock> stocks = (ArrayList<Stock>)getArguments().getSerializable(STOCKS_ID);
+        Bundle args = getArguments();
+        ArrayList<Stock> stocks = (ArrayList<Stock>)args.getSerializable("stocks");
+        readOnly = args.getBoolean("readOnly");
         StockAdapter adapter = new StockAdapter(stocks);
         setListAdapter(adapter);
     }
@@ -45,6 +49,8 @@ public class StockListFragment extends ListFragment {
     // if success => goto sell or cover page
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        if (readOnly)
+            return;
         // get the Stock from the adapter
         Stock stock = ((StockAdapter)getListAdapter()).getItem(position);
         if (stock.isShorted()) {

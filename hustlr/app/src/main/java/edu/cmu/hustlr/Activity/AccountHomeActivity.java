@@ -29,7 +29,8 @@ public class AccountHomeActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         Fragment searchFriendFragment = SearchFriendFragment.newInstance();
         Fragment summaryFragment = SummaryFragment.newInstance(MyGlobal.me.getName(), MyGlobal.me.getCash());
-        Fragment stockListFragment = StockListFragment.getNewInstance(MyGlobal.me.getPortfolio().getAllStocks());
+        boolean readOnly = false;
+        Fragment stockListFragment = StockListFragment.getNewInstance(MyGlobal.me.getPortfolio().getAllStocks(), readOnly);
         manager.beginTransaction()
                 .add(R.id.fragmentSearchFriend, searchFriendFragment)
                 .add(R.id.fragmentSummary, summaryFragment)
