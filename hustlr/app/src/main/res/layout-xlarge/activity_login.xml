@@ -22,7 +22,7 @@
             <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView android:id="@+id/loginUsername" android:layout_width="match_parent"
+                <AutoCompleteTextView android:id="@+id/editLoginUsername" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="@string/prompt_username"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -42,7 +42,7 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button android:id="@+id/signinButton"
+            <Button android:id="@+id/buttonLoginSignin"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" android:text="@string/action_sign_in"
                 />
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="REGISTER"
-                android:id="@+id/registerButton"
+                android:id="@+id/buttonLoginRegister"
                 android:layout_gravity="center_horizontal" />
 
         </LinearLayout>

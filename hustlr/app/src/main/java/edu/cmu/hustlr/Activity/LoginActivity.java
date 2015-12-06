@@ -3,9 +3,7 @@ package edu.cmu.hustlr.Activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +40,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  * Views:
  *   Edit: username, password
  *   Button: Signin, Register
+ * xml: activity_login.xml with R.id = typeLoginWidgetname
  * Page flow:
  *   init page.
  *   click Signin: send a "login" request to the backend (LoginTask), and would be redirected to AccountHomeActivity if succeed.
@@ -78,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // goto register page
-        Button buttonSignup = (Button)findViewById(R.id.registerButton);
+        Button buttonSignup = (Button)findViewById(R.id.buttonLoginRegister);
         buttonSignup.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
@@ -88,18 +87,18 @@ public class LoginActivity extends AppCompatActivity {
         );
 
         // try to login and goto account home page
-        Button buttonLogin = (Button)findViewById(R.id.signinButton);
+        Button buttonLogin = (Button)findViewById(R.id.buttonLoginSignin);
         buttonLogin.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
                         // TODO ask data from server
                         MyGlobal.me = new User();
 
-                        EditText editUsername = (EditText)findViewById(R.id.loginUsername);
+                        EditText editUsername = (EditText)findViewById(R.id.editLoginUsername);
                         String username = editUsername.getText().toString();
                         MyGlobal.me.setName(username);
 
-                        EditText editPassword = (EditText)findViewById(R.id.loginPassword);
+                        EditText editPassword = (EditText)findViewById(R.id.editLoginPassword);
                         String password = editPassword.getText().toString();
                         MyGlobal.me.setPassword(password);
 
@@ -109,10 +108,10 @@ public class LoginActivity extends AppCompatActivity {
         );
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.loginUsername);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.editLoginUsername);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.loginPassword);
+        mPasswordView = (EditText) findViewById(R.id.editLoginPassword);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
