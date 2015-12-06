@@ -50,6 +50,7 @@ router.get('/login', function(req, res, next) {
 router.get('/signup', function(req, res, next) {
    var username = req.query.username;
    var password = req.query.password;
+   var cash = req.query.cash;
    console.log("User " + username + " tried signing up with password: " + password);
 
 
@@ -66,7 +67,7 @@ router.get('/signup', function(req, res, next) {
          return sendJson({result: 'success'}, res);
       }
 
-      db.createUser(username, password, '100000.00', s1, f1)
+      db.createUser(username, password, cash, s1, f1)
    }
 
    db.checkIfUserExists(username, success, failure);
