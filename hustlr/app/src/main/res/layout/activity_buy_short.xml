@@ -12,19 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stock Name"
-        android:id="@+id/textStockNameLabel"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="APPL-Sample"
-        android:id="@+id/textBuyShortStockName"
-        android:layout_below="@+id/textStockNameLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:id="@+id/textBuyShortSymbol"
         android:layout_marginLeft="38dp"
         android:layout_marginStart="38dp" />
 
@@ -56,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Buy"
-        android:id="@+id/buttonBuyShortType"
+        android:id="@+id/buttonBuyShortSubmit"
         android:layout_marginBottom="19dp"
         />
     <Button

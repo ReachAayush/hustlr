@@ -17,14 +17,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Buy"
-            android:id="@+id/bottonSearchStockBuy"
+            android:id="@+id/buttonSearchStockBuy"
             android:layout_gravity="right"
             />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Short"
-            android:id="@+id/bottonSearchStockShort"
+            android:id="@+id/buttonSearchStockShort"
             android:layout_gravity="right"
             />
     </LinearLayout>

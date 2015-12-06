@@ -12,33 +12,33 @@ import edu.cmu.hustlr.R;
  */
 public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
 
-    private LoginActivity mLoginActivity;
+    private LoginActivity mActivity;
     public LoginActivityTest() {
         super(LoginActivity.class);
     }
 
     protected void setUp() throws Exception {
         super.setUp();
-        mLoginActivity = getActivity();
+        mActivity = getActivity();
     }
 
     public void testUsername() {
-        EditText editUsername = (EditText)mLoginActivity.findViewById(R.id.editLoginUsername);
-        Assert.assertNotNull(editUsername);
+        EditText edit = (EditText) mActivity.findViewById(R.id.editLoginUsername);
+        Assert.assertNotNull(edit);
     }
 
     public void testPassword() {
-        EditText editPassword = (EditText)mLoginActivity.findViewById(R.id.editLoginPassword);
-        Assert.assertNotNull(editPassword);
+        EditText edit = (EditText) mActivity.findViewById(R.id.editLoginPassword);
+        Assert.assertNotNull(edit);
     }
 
     public void testSignup() {
-        Button buttonSignup = (Button)mLoginActivity.findViewById(R.id.buttonLoginSignin);
-        Assert.assertNotNull(buttonSignup);
+        Button button = (Button) mActivity.findViewById(R.id.buttonLoginSignin);
+        Assert.assertNotNull(button);
     }
 
     public void testRegister() {
-        Button buttonRegister = (Button)mLoginActivity.findViewById(R.id.buttonLoginRegister);
-        Assert.assertNotNull(buttonRegister);
+        Button button = (Button) mActivity.findViewById(R.id.buttonLoginRegister);
+        Assert.assertNotNull(button);
     }
 }

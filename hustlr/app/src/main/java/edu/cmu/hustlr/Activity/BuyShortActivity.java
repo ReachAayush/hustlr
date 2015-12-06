@@ -39,12 +39,12 @@ public class BuyShortActivity extends AppCompatActivity {
         TextView editPrice = (TextView)findViewById(R.id.textBuyShortCurrentPrice);
         editPrice.setText(String.valueOf(price));
 
-        TextView editSymbol = (TextView)findViewById(R.id.textBuyShortStockName);
+        TextView editSymbol = (TextView)findViewById(R.id.textBuyShortSymbol);
         editSymbol.setText(symbol);
 
         // request for the transcation
         // if success => goto home account page
-        Button buttonType = (Button)findViewById(R.id.buttonBuyShortType);
+        Button buttonType = (Button)findViewById(R.id.buttonBuyShortSubmit);
         buttonType.setText(type);
         buttonType.setOnClickListener(
                 new Button.OnClickListener() {

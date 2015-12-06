@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/bottonSearchFriend"
+        android:id="@+id/buttonSearchFriendSubmit"
         android:layout_alignBottom="@+id/editHomeSearchFriend"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

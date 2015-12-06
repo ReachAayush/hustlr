@@ -40,7 +40,7 @@ public class SearchStockFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_search_stock, container, false);
 
         // goto buy page
-        Button btnBuyStock = (Button) v.findViewById(R.id.bottonSearchStockBuy);
+        Button btnBuyStock = (Button) v.findViewById(R.id.buttonSearchStockBuy);
         btnBuyStock.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
@@ -50,7 +50,7 @@ public class SearchStockFragment extends Fragment {
                 }
         );
         // goto short page
-        Button btnShortStock = (Button) v.findViewById(R.id.bottonSearchStockShort);
+        Button btnShortStock = (Button) v.findViewById(R.id.buttonSearchStockShort);
         btnShortStock.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {

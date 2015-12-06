@@ -37,7 +37,7 @@ public class SearchFriendFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_search_friend, container, false);
-        Button buttonSearchFriend = (Button)v.findViewById(R.id.bottonSearchFriend);
+        Button buttonSearchFriend = (Button)v.findViewById(R.id.buttonSearchFriendSubmit);
         buttonSearchFriend.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
