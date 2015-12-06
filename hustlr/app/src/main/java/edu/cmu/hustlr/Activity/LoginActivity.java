@@ -102,6 +102,9 @@ public class LoginActivity extends AppCompatActivity {
                         String password = editPassword.getText().toString();
                         MyGlobal.me.setPassword(password);
 
+                        EditText editHost = (EditText)findViewById(R.id.editLoginHost);
+                        MyGlobal.host = editHost.getText().toString();
+
                         new LoginTask(getApplicationContext()).execute();
                     }
                 }

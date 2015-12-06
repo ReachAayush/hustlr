@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.Map;
 
@@ -45,6 +46,8 @@ public abstract class HttpRequestTask extends AsyncTask<String, Void, JSONObject
             e.printStackTrace();
             return fail(e.toString());
         }
+        // set timeout to 5 sec
+        httpURLConnection.setConnectTimeout(5000);
         try {
             httpURLConnection.setRequestMethod("GET");
         } catch (ProtocolException e) {
@@ -55,6 +58,9 @@ public abstract class HttpRequestTask extends AsyncTask<String, Void, JSONObject
         int responseCode = 0;
         try {
             responseCode = httpURLConnection.getResponseCode();
+        } catch (SocketTimeoutException e) {
+            e.printStackTrace();
+            return fail(e.toString());
         } catch (IOException e) {
             e.printStackTrace();
             return fail(e.toString());

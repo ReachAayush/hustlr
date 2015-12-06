@@ -76,5 +76,13 @@
         android:id="@+id/buttonSignupLogin"
         android:layout_gravity="center_horizontal"
         />
-
+    <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView android:id="@+id/editSignupHost" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Server IP address"
+            android:text="52.90.241.202"
+            android:layout_gravity="bottom"
+            android:singleLine="true"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
 </LinearLayout>

@@ -38,6 +38,10 @@ public class LoginTask extends HttpRequestTask {
             new AccountHomeTask(context).execute();
         } catch (JSONException e) {
             e.printStackTrace();
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 }

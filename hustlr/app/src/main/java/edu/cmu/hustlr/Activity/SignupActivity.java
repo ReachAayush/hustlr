@@ -40,6 +40,10 @@ public class SignupActivity extends AppCompatActivity {
                             EditText editCash = (EditText) findViewById(R.id.editSignupCash);
                             MyGlobal.me.setCash(Double.parseDouble(editCash.getText().toString()));
                             // TODO check email, confirm password, ...etc
+
+                            EditText editHost = (EditText)findViewById(R.id.editSignupHost);
+                            MyGlobal.host = editHost.getText().toString();
+
                             new SignupTask(getApplicationContext()).execute();
                         } catch (Exception e) {
                             // TODO customized exception here

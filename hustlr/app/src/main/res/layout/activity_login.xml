@@ -14,7 +14,7 @@
         android:layout_marginBottom="8dp" android:visibility="gone" />
 
     <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:orientation="vertical">
@@ -53,7 +53,15 @@
                 android:text="REGISTER"
                 android:id="@+id/buttonLoginRegister"
                 android:layout_gravity="center_horizontal" />
-
         </LinearLayout>
     </ScrollView>
+    <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView android:id="@+id/editLoginHost" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Server IP address"
+            android:text="52.90.241.202"
+            android:layout_gravity="bottom"
+            android:singleLine="true"
+            android:inputType="text" />
+    </android.support.design.widget.TextInputLayout>
 </LinearLayout>
