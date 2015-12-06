@@ -44,8 +44,8 @@ public class SearchStockFragment extends Fragment {
         btnBuyStock.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        EditText editSearchStockName = (EditText) v.findViewById(R.id.editSearchStockSymbol);
-                        new LoadBuyTask(getActivity().getApplicationContext(), editSearchStockName.getText().toString()).execute();
+                        EditText editSearchStockSymbol = (EditText) getActivity().findViewById(R.id.editSearchStockSymbol);
+                        new LoadBuyTask(getActivity().getApplicationContext(), editSearchStockSymbol.getText().toString()).execute();
                     }
                 }
         );
@@ -54,7 +54,7 @@ public class SearchStockFragment extends Fragment {
         btnShortStock.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        EditText editSearchStockName = (EditText) v.findViewById(R.id.editSearchStockSymbol);
+                        EditText editSearchStockName = (EditText) getActivity().findViewById(R.id.editSearchStockSymbol);
                         new LoadShortTask(getActivity().getApplicationContext(), editSearchStockName.getText().toString()).execute();
                     }
                 }
