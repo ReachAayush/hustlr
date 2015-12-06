@@ -92,9 +92,9 @@ public abstract class HttpRequestTask extends AsyncTask<String, Void, JSONObject
         StringBuffer str = new StringBuffer();
         str.append("{");
         str.append("result:fail, ");
-        str.append("reason:");
+        str.append("reason:\"");
         str.append(reason);
-        str.append("}");
+        str.append("\"}");
         return str2json(str.toString());
     }
 
