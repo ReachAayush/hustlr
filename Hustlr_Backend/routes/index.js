@@ -60,7 +60,7 @@ router.get('/signup', function(req, res, next) {
 
    var failure = function(){
       var f1 = function(){
-         return sendJson({result: 'fail', reason: 'internal error'});
+         return sendJson({result: 'fail', reason: 'internal error'}, res);
       }
 
       var s1 = function(){
