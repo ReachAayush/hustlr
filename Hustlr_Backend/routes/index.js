@@ -25,6 +25,11 @@ function getStockPrice(symbol, callback){
 router.get('/login', function(req, res, next) {
    var username = req.query.username;
    var password = req.query.password;
+
+   if(username == null || password == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried logging in with password: " + password);
 
    var failure = function(){
@@ -51,6 +56,11 @@ router.get('/signup', function(req, res, next) {
    var username = req.query.username;
    var password = req.query.password;
    var cash = req.query.cash;
+
+   if(username == null || password == null || cash == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried signing up with password: " + password);
 
 
@@ -76,6 +86,11 @@ router.get('/signup', function(req, res, next) {
 /* handle get request for accessing account home */
 router.get('/getuser', function(req, res, next) {
    var username = req.query.username;
+
+   if(username == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried accessing account home");
 
    var failure = function(){
@@ -99,6 +114,11 @@ router.get('/getuser', function(req, res, next) {
 router.get('/getotheruser', function(req, res, next) {
    var username = req.query.username;
    var friendUsername = req.query.friendname;
+
+   if(username == null || friendUsername == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried accessing " + friendUsername + "'s page");
 
    var failure = function(){
@@ -130,6 +150,11 @@ router.get('/getotheruser', function(req, res, next) {
 router.get('/loadbuy', function(req, res, next) {
    var username = req.query.username;
    var symbol = req.query.symbol;
+
+   if(username == null || symbol == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " wants to buy " + symbol);
 
    var failure = function(){
@@ -156,6 +181,11 @@ router.get('/buystock', function(req, res, next) {
    var username = req.query.username;
    var symbol = req.query.symbol;
    var quantity = req.query.quantity;
+
+   if(username == null || symbol == null || quantity == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried buying " + quantity + " shares of " + symbol);
 
    var failure = function(){
@@ -192,6 +222,11 @@ router.get('/buystock', function(req, res, next) {
 router.get('/loadsell', function(req, res, next) {
    var username = req.query.username;
    var id = req.query.ownedStockId;
+
+   if(username == null || id == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " clicked cover on " + id);
 
    var failure = function(){
@@ -231,6 +266,11 @@ router.get('/loadsell', function(req, res, next) {
 router.get('/loadshort', function(req, res, next) {
    var username = req.query.username;
    var symbol = req.query.symbol;
+
+   if(username == null || symbol == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " wants to short " + symbol);
 
    var failure = function(){
@@ -257,6 +297,11 @@ router.get('/sellstock', function(req, res, next) {
    var username = req.query.username;
    var id = req.query.ownedStockId;
    var quantity = req.query.quantity;
+
+   if(username == null || id == null || quantity == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried to sell " + quantity + " shares of owned_stock_id:" + id);
 
    if(quantity<0){
@@ -316,6 +361,11 @@ router.get('/sellstock', function(req, res, next) {
 router.get('/loadcover', function(req, res, next) {
    var username = req.query.username;
    var id = req.query.ownedStockId;
+
+   if(username == null || id == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " clicked sell on " + id);
 
    var failure = function(){
@@ -356,6 +406,11 @@ router.get('/shortstock', function(req, res, next) {
    var username = req.query.username;
    var symbol = req.query.symbol;
    var quantity = req.query.quantity;
+
+   if(username == null || symbol == null || quantity == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried shorting " + quantity + " shares of " + symbol);
 
    var failure = function(){
@@ -389,6 +444,11 @@ router.get('/coverstock', function(req, res, next) {
    var username = req.query.username;
    var id = req.query.ownedStockId;
    var quantity = req.query.quantity;
+
+   if(username == null || id == null || quantity == null){
+      return sendJson({result: 'fail', reason: 'invalid request'}, res);  
+   }
+
    console.log("User " + username + " tried to cover " + quantity + " shares of shorted owned_stock_id:" + id);
 
    if(quantity<0){
