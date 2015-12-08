@@ -1,0 +1,13 @@
+1. localhost:3000/signup?username=aayush&password=bobsingh&cash=10000
+
+2. localhost:3000/login?username=aayush&password=bobsingh
+
+3. localhost:3000/getuser?username=aayush (cash should be 10000)
+
+4. localhost:3000/buystock?username=aayush&symbol=LMT&quantity=100
+
+5. localhost:3000/getuser?username=aayush (cash should be 10000 - price of LMT * 100)
+
+6. localhost:3000/sellstock?username=aayush&ownedStockId=1&quantity=100
+
+7. localhost:3000/getuser?username=aayush (cash should be 10000)
