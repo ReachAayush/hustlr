@@ -1,3 +1,5 @@
+Intended Behavior:
+------------------
 1. localhost:3000/signup?username=aayush&password=bobsingh&cash=10000
 
 2. localhost:3000/login?username=aayush&password=bobsingh
@@ -11,3 +13,21 @@
 6. localhost:3000/sellstock?username=aayush&ownedStockId=1&quantity=100
 
 7. localhost:3000/getuser?username=aayush (cash should be 10000)
+--------------------------------------------------------------------------------------
+
+
+Malicious Behavior:
+-------------------
+1. localhost:3000/signup?username=aayush&password=bobsingh&cash=10000
+	(should return failed because aayush already exists)
+
+2. localhost:3000/buystock?username=aayush&symbol=GOOG&quantity=9999
+	(should return failed because not enough funds)
+
+3. localhost:3000/buystock?username=aayush&symbol=GOOG&quantity=-1
+	(should return failed because can't buy negative amount)
+
+4. localhost:3000/buystock?username=aayush&symbol=BOBSINGH&quantity=9999
+	(should never get here because BOBSINGH isn't a valid stock so buy page should never load)
+
+5. try all of the above for sell/ cover/ short
