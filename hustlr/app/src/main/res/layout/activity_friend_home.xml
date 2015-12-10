@@ -32,11 +32,12 @@
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:id="@+id/fragmentSearchFriend">
     </FrameLayout>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Back Home"
             android:id="@+id/bottonFriendBackHome"

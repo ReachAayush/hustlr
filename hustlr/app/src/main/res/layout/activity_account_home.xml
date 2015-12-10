@@ -6,17 +6,6 @@
     tools:context=".AccountHomeActivity"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragmentSearchFriend">
-    </FrameLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        />
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -24,11 +13,6 @@
         android:id="@+id/fragmentSummary" >
     </FrameLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        />
 
     <FrameLayout
         android:layout_width="fill_parent"
@@ -43,9 +27,17 @@
         />
 
     <FrameLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:id="@+id/fragmentSearchStock">
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/fragmentSearchFriend">
     </FrameLayout>
 
 </LinearLayout>

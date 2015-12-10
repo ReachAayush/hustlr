@@ -1,5 +1,7 @@
 package edu.cmu.hustlr.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import edu.cmu.hustlr.R;
 import edu.cmu.hustlr.Util.LoadBuyTask;
 import edu.cmu.hustlr.Util.LoadShortTask;
+import edu.cmu.hustlr.Util.VisitFriendTask;
 
 /**
  * Created by rueiminl on 2015/12/5.
@@ -44,20 +47,48 @@ public class SearchStockFragment extends Fragment {
         btnBuyStock.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        EditText editSearchStockSymbol = (EditText) getActivity().findViewById(R.id.editSearchStockSymbol);
-                        new LoadBuyTask(getActivity().getApplicationContext(), editSearchStockSymbol.getText().toString()).execute();
+
+                        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create(); //Read Update
+                        alertDialog.setTitle("Buy Stock");
+
+                        final EditText input = new EditText(getActivity());
+                        input.setHint("Enter Symbol:");
+                        alertDialog.setView(input);
+
+                        alertDialog.setButton("Search", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                new LoadBuyTask(getActivity().getApplicationContext(), input.getText().toString()).execute();
+                            }
+                        });
+
+                        alertDialog.show();
                     }
                 }
         );
         // goto short page
         Button btnShortStock = (Button) v.findViewById(R.id.buttonSearchStockShort);
         btnShortStock.setOnClickListener(
+
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        EditText editSearchStockName = (EditText) getActivity().findViewById(R.id.editSearchStockSymbol);
-                        new LoadShortTask(getActivity().getApplicationContext(), editSearchStockName.getText().toString()).execute();
+
+                        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create(); //Read Update
+                        alertDialog.setTitle("Short Stock");
+
+                        final EditText input = new EditText(getActivity());
+                        input.setHint("Enter Symbol:");
+                        alertDialog.setView(input);
+
+                        alertDialog.setButton("Search", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                new LoadShortTask(getActivity().getApplicationContext(), input.getText().toString()).execute();
+                            }
+                        });
+
+                        alertDialog.show();
                     }
                 }
+
         );
 
         return v;

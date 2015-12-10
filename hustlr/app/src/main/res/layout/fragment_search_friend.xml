@@ -3,17 +3,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:id="@+id/buttonSearchFriendSubmit"
-        android:layout_gravity="right" />
-    <android.support.design.widget.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editSearchFriendName"
-        android:hint="Friend Name" />
-    </android.support.design.widget.TextInputLayout>
+        android:text="View Friend"
+        android:layout_gravity="center"
+        android:id="@+id/buttonSearchFriendSubmit"/>
 
 </LinearLayout>

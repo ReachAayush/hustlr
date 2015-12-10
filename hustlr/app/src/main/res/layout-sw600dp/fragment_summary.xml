@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -39,6 +40,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            />
+
 
         <TableRow
             android:layout_width="match_parent"
@@ -53,13 +60,18 @@
 
         </TableRow>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            />
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_column="0"
                 android:layout_gravity="left"
@@ -68,7 +80,7 @@
                 android:id="@+id/textSymbol" />
 
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:layout_gravity="center"
@@ -77,20 +89,14 @@
                 android:id="@+id/textPrice" />
 
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="225dp"
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="center"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Shares"
+                android:text="Owned Shares"
                 android:id="@+id/textOwned" />
         </TableRow>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            />
     </TableLayout>
 
 </LinearLayout>

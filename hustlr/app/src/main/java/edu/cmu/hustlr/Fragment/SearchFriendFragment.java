@@ -1,5 +1,7 @@
 package edu.cmu.hustlr.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -41,9 +43,21 @@ public class SearchFriendFragment extends Fragment {
         buttonSearchFriend.setOnClickListener(
                 new Button.OnClickListener() {
                     public void onClick(View v) {
-                        EditText editFriendName = (EditText) getActivity().findViewById(R.id.editSearchFriendName);
-                        String friendName = editFriendName.getText().toString();
-                        new VisitFriendTask(getActivity().getApplicationContext(), friendName).execute();
+
+                        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create(); //Read Update
+                        alertDialog.setTitle("Search Friend");
+
+                        final EditText input = new EditText(getActivity());
+                        input.setHint("Enter Name:");
+                        alertDialog.setView(input);
+
+                        alertDialog.setButton("Search", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                new VisitFriendTask(getActivity().getApplicationContext(), input.getText().toString()).execute();
+                            }
+                        });
+
+                        alertDialog.show();
                     }
                 }
         );
