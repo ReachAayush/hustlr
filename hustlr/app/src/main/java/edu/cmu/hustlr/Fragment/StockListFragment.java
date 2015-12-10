@@ -50,6 +50,7 @@ public class StockListFragment extends ListFragment {
         readOnly = args.getBoolean("readOnly");
         StockAdapter adapter = new StockAdapter(stocks);
         setListAdapter(adapter);
+
     }
 
     // send http request of sell/cover stock (for price)
@@ -73,7 +74,7 @@ public class StockListFragment extends ListFragment {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, final ViewGroup parent) {
             // if we weren't given a view, inflate one
             if (null == convertView) {
                 convertView = getActivity().getLayoutInflater()
@@ -88,6 +89,30 @@ public class StockListFragment extends ListFragment {
             textStockStartPrice.setText(DecimalFormat.getCurrencyInstance().format(stock.getStartPrice()));
             TextView textQuantity = (TextView)convertView.findViewById(R.id.textStockListQuantity);
             textQuantity.setText(String.valueOf(stock.getQuantity()));
+
+            Button sellCoverButton = (Button) convertView.findViewById(R.id.SellCoverButton);
+            CharSequence sellCover = stock.isShorted() ? "Cover" : "Sell";
+            sellCoverButton.setText(sellCover);
+            sellCoverButton.setTag(position);
+            sellCoverButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Button b = (Button) v;
+                    int position = (int) b.getTag();
+
+                    if (readOnly)
+                        return;
+                    // get the Stock from the adapter
+                    Stock stock = ((StockAdapter) getListAdapter()).getItem(position);
+                    if (stock.isShorted()) {
+                        new LoadCoverTask(getActivity().getApplicationContext(), stock.getId()).execute();
+                    } else {
+                        new LoadSellTask(getActivity().getApplicationContext(), stock.getId()).execute();
+                    }
+
+                }
+            });
+
             return convertView;
         }
     }

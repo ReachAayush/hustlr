@@ -35,9 +35,10 @@ public class SummaryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_summary, container, false);
         TextView textUsername = (TextView) v.findViewById(R.id.textSummaryUsername);
-        textUsername.setText(username);
+        textUsername.setText(username.concat("'s Portfolio"));
         TextView textCash = (TextView)v.findViewById(R.id.textSummaryCash);
-        textCash.setText(String.valueOf(cash));
+        String cashStr = "Cash on Hand: $";
+        textCash.setText(cashStr.concat(String.valueOf(cash)));
         return v;
     }
 }

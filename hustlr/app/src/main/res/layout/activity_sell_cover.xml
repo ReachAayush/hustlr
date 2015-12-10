@@ -12,52 +12,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stock Name"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="APPL-Sample"
         android:id="@+id/textSellCoverSymbol"
         android:layout_marginLeft="38dp"
-        android:layout_marginStart="38dp" />
+        android:layout_marginStart="38dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Price"
-        />
+        android:layout_marginTop="17dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="999.99"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
         android:id="@+id/textSellCoverStartPrice"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Current Price"
         android:layout_marginTop="17dp"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="999.99"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
         android:id="@+id/textSellCoverCurrentPrice"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quantity"
         android:layout_marginTop="26dp"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="9999"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
         android:id="@+id/textSellCoverQuantity"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
         android:layout_width="match_parent"
