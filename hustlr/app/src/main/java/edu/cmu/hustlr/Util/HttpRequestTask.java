@@ -18,7 +18,6 @@ import java.net.URL;
 import java.util.Map;
 
 import edu.cmu.hustlr.Entities.MyGlobal;
-import edu.cmu.hustlr.Intent.LoginIntent;
 
 /**
  * Created by rueiminl on 2015/12/4.
