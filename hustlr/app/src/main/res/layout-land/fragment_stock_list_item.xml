@@ -12,7 +12,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_width="75dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="APPL "
                 android:layout_column="0"
@@ -21,7 +21,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:layout_gravity="center"
@@ -30,7 +30,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text=" 2000"
                 android:layout_column="2"
@@ -46,7 +46,7 @@
                 android:layout_column="3"
                 android:text="Cover"
                 android:id="@+id/SellCoverButton"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:clickable="true"
                 android:tag="1" />
         </TableRow>

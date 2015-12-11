@@ -26,13 +26,11 @@
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"></LinearLayout>
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="25dp"
         android:id="@+id/fragmentSearchFriend">
     </FrameLayout>
 
