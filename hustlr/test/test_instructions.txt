@@ -1,0 +1,28 @@
+Reference of Unit Test on Android
+
+    http://developer.android.com/training/testing.html
+
+Goal
+
+    Auto test if UI resource and java code are matched
+
+Related Files
+
+    hustlr/app/src/androidTest
+        java/edu/cmu/hustlr
+            ApplicationTest.java
+            Activity
+                LoginActivityTest.java
+                SignupActivityTest.java
+
+How to run the test
+
+    In Android Studio IDE, open the terminal and type the command:
+    $ ./gradlew connectedAndroidTest
+    (Note: in Windows OS, you might need to use ./gradlew.bat instead)
+
+Output
+
+    app/build/reports/androidTests/connected/index.html
+    We attached a sample output in hustlr/test/sample_output
+
